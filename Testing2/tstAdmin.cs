@@ -49,9 +49,9 @@ namespace Testing2
             //create some test data to assign to the property
             string TestData = "name";
             //assign the data to the property
-            AnAdmin.Username = TestData;
+            AnAdmin.UserName = TestData;
             //test to see that the two values are the same
-            Assert.AreEqual(AnAdmin.Username, TestData);
+            Assert.AreEqual(AnAdmin.UserName, TestData);
         }
         [TestMethod]
         public void PasswordOK()
