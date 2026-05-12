@@ -7,8 +7,8 @@ namespace ClassLibrary
         //private data member for the Adminid property
         private int mAdminid;
         //Adminid public property
-        public int Adminid 
-            {
+        public int Adminid
+        {
             get
             {
                 //this line of code sends data out of the property
@@ -23,7 +23,7 @@ namespace ClassLibrary
         //private data member for the UserName property
         private string mUserName;
         public string UserName
-            {
+        {
             get
             {
                 //this line of code sends data out of the property
@@ -38,7 +38,7 @@ namespace ClassLibrary
         //private data member for the Email property
         private string mEmail;
         public string Email
-            {
+        {
             get
             {
                 //this line of code sends data out of the property
@@ -53,7 +53,7 @@ namespace ClassLibrary
         //private data member for the Password property
         private string mPassword;
         public string Password
-            {
+        {
             get
             {
                 //this line of code sends data out of the property
@@ -68,7 +68,7 @@ namespace ClassLibrary
         //private data member for the Order property
         private string mOrder;
         public string Order
-            {
+        {
             get
             {
                 //this line of code sends data out of the property
@@ -81,9 +81,9 @@ namespace ClassLibrary
             }
         }
         //private data member for the Stock property
-            private bool mStock;
+        private bool mStock;
         public bool Stock
-            {
+        {
             get
             {
                 //this line of code sends data out of the property
@@ -100,16 +100,33 @@ namespace ClassLibrary
 
         public bool Find(int adminid)
         {
-            //set the private data member to the test data value
-            mAdminid = 1;
-            mUserName = "name";
-            mEmail = "admin@text";
-            mPassword = "password123";
-            mOrder = "1";
-            mStock = true;
-            //always return true
-            return true;
+            //create an instance of the data connection
+            clsDataConnection DB = new clsDataConnection();
+            //add the parameter for the Adminid to search for
+            DB.AddParameter("@Adminid", adminid);
+            //execute the stored procedure
+            DB.Execute("sproc_tblAdmin_FilterByAdminid");
+            //if one record is found (there should be either one or zero!)
+            if (DB.Count == 1)
+            {
+                //copy the data from the database to the private data members
+                mAdminid = Convert.ToInt32(DB.DataTable.Rows[0]["Adminid"]);
+                mUserName = Convert.ToString(DB.DataTable.Rows[0]["UserName"]);
+                mEmail = Convert.ToString(DB.DataTable.Rows[0]["Email"]);
+                mPassword = Convert.ToString(DB.DataTable.Rows[0]["Password"]);
+                mOrder = Convert.ToString(DB.DataTable.Rows[0]["Order"]);
+                mStock = Convert.ToBoolean(DB.DataTable.Rows[0]["Stock"]);
+                //return that everything worked OK
+                return true;
+            }
+            //if no record was found
+            else
+            {
+                //return false, indicating a problem
+                return false;
+
+
+            }
         }
-        
     }
 }
