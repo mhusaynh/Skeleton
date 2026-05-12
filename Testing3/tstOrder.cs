@@ -25,9 +25,9 @@ namespace Testing3
             //create some test data to assign to the property
             Boolean TestData = true;
             //assign the data to the property
-            AnOrder.Active = TestData;
+            AnOrder.Completed = TestData;
             //test to see that the two values are the same
-            Assert.AreEqual(AnOrder.Active, TestData);
+            Assert.AreEqual(AnOrder.Completed, TestData);
         }
 
 
@@ -63,7 +63,7 @@ namespace Testing3
             //create an instance of the class we want to create
             clsOrder AnOrder = new clsOrder();
             //create some test data to assign to the property
-            decimal TestData = "2999p";
+            decimal TestData = 2999m;
             //assign the data to the property
             AnOrder.Price = TestData;
             //test to see that the two values are the same
