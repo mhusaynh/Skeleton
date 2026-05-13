@@ -148,7 +148,7 @@ namespace Testing2
             //invoke the method
             Found = AnAdmin.Find(Adminid);
             //check the UserName
-            if (AnAdmin.UserName != "name")
+            if (AnAdmin.UserName != "John")
             {
                 OK = false;
             }
@@ -169,7 +169,7 @@ namespace Testing2
             //invoke the method
             Found = AnAdmin.Find(Adminid);
             //check the Email
-            if (AnAdmin.Email != "admin@text")
+            if (AnAdmin.Email != "john12@gmail.com")
             {
                 OK = false;
             }
@@ -190,7 +190,7 @@ namespace Testing2
             //invoke the method
             Found = AnAdmin.Find(Adminid);
             //check the Password
-            if (AnAdmin.Password != "password123")
+            if (AnAdmin.Password != "john123")
             {
                 OK = false;
             }
@@ -211,7 +211,7 @@ namespace Testing2
             //invoke the method
             Found = AnAdmin.Find(Adminid);
             //check the Order
-            if (AnAdmin.Order != "1")
+            if (AnAdmin.Order != "22")
             {
                 OK = false;
             }

@@ -12,11 +12,10 @@
             This is the Admin Data Entry Page</div>
         <p>
             <asp:TextBox ID="txtAdminid" runat="server" style="z-index: 1; top: 58px; position: absolute; left: 107px"></asp:TextBox>
+        <asp:Label ID="lblAdminId" runat="server" style="z-index: 1; left: 11px; top: 56px; position: absolute; height: 22px;" Text="Admin ID"></asp:Label>
         </p>
         <p>
-            <asp:Label ID="lblUsername" runat="server" style="z-index: 1; left: 15px; top: 96px; position: absolute; height: 39px" Text="UserName" width="60px"></asp:Label>
-        </p>
-        <asp:Label ID="lblAdminId" runat="server" style="z-index: 1; left: 15px; top: 58px; position: absolute" Text="Admin ID"></asp:Label>
+            &nbsp;</p>
         <asp:TextBox ID="txtEmail" runat="server" style="z-index: 1; left: 105px; top: 131px; position: absolute" width="168px"></asp:TextBox>
         <p>
             <asp:TextBox ID="txtUserName" runat="server" style="z-index: 1; left: 106px; top: 94px; position: absolute" width="168px"></asp:TextBox>
@@ -36,6 +35,16 @@
         </p>
         <asp:Button ID="btnOK" runat="server" OnClick="btnOK_Click" style="z-index: 1; left: 16px; top: 337px; position: absolute" Text="OK" width="59px" />
         <asp:Button ID="btnCancel" runat="server" style="z-index: 1; left: 118px; top: 337px; position: absolute" Text="Cancel" width="59px" />
+        <p>
+            &nbsp;</p>
+        <p>
+            <asp:Label ID="lblUsername" runat="server" style="z-index: 1; left: 9px; top: 95px; position: absolute; height: 22px; width: 82px;" Text="UserName"></asp:Label>
+            <asp:Button ID="btnFind" runat="server" Height="31px" OnClick="btnFind_Click" Text="Find" width="60px" />
+        </p>
+        <p>
+            &nbsp;</p>
+        <p>
+            &nbsp;</p>
     </form>
 </body>
 </html>
