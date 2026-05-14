@@ -117,7 +117,7 @@ namespace Testing3
             //create a Boolean variable to store the results of the validator
             Boolean Found = false;
             //create some test data to use with the method
-            Int32 OrderId = 10;
+            Int32 OrderId = 3;
             //invoke the method
             Found = AnOrder.Find(OrderId);
             //test to see if the result is true
@@ -134,11 +134,11 @@ namespace Testing3
             //create a Boolean variable to record if the data is OK (assume it is)
             Boolean OK = true;
             //create some test data to use with the method
-            Int32 OrderId = 10;
+            Int32 OrderId = 3;
             //invoke the method
             Found = AnOrder.Find(OrderId);
             //check the order id
-            if (AnOrder.OrderId != 10)
+            if (AnOrder.OrderId != 3)
             {
                 OK = false;
             }
@@ -156,11 +156,11 @@ namespace Testing3
             //create a Boolean variable to record if the data is OK (assume it is)
             Boolean OK = true;
             //create some test data to use with the method
-            Int32 OrderId = 10;
+            Int32 OrderId = 1;
             //invoke the method
             Found = AnOrder.Find(OrderId);
             //check the product property
-            if (AnOrder.Product != "nike air max")
+            if (AnOrder.Product != "nikeairmax")
             {
                 OK = false;
             }
@@ -178,11 +178,11 @@ namespace Testing3
             //create a Boolean variable to record if the data is OK (assume it is)
             Boolean OK = true;
             //create some test data to use with the method
-            Int32 OrderId = 10;
+            Int32 OrderId = 1;
             //invoke the method
             Found = AnOrder.Find(OrderId);
             //check the price property
-            if (AnOrder.Price != 35.00m)
+            if (AnOrder.Price != 34)
             {
                 OK = false;
             }
@@ -200,11 +200,11 @@ namespace Testing3
             //create a Boolean variable to record if the data is OK (assume it is)
             Boolean OK = true;
             //create some test data to use with the method
-            Int32 OrderId = 10;
+            Int32 OrderId = 6;
             //invoke the method
             Found = AnOrder.Find(OrderId);
             //check the dateAdded property
-            if (AnOrder.DateAdded != Convert.ToDateTime("13/04/2024"))
+            if (AnOrder.DateAdded != Convert.ToDateTime("04/07/2025"))
             {
                 OK = false;
             }
@@ -222,7 +222,7 @@ namespace Testing3
             //create a Boolean variable to record if the data is OK (assume it is)
             Boolean OK = true;
             //create some test data to use with the method
-            Int32 OrderId = 10;
+            Int32 OrderId = 3;
             //invoke the method
             Found = AnOrder.Find(OrderId);
             //check the quantity property
@@ -244,7 +244,7 @@ namespace Testing3
             //create a Boolean variable to record if the data is OK (assume it is)
             Boolean OK = true;
             //create some test data to use with the method
-            Int32 OrderId = 10;
+            Int32 OrderId = 2;
             //invoke the method
             Found = AnOrder.Find(OrderId);
             //check the completed property
