@@ -239,5 +239,130 @@ namespace Testing2
             //test to see that the result is correct
             Assert.IsTrue(OK);
         }
+        [TestMethod]
+        public void ValidMethodOK()
+        {
+            //create an instance of the class we want to create
+            clsAdmin AnAdmin = new clsAdmin();
+            //string variable to store any error message
+            String Error = "";
+            //invoke the method
+            Error = AnAdmin.Valid(AnAdmin.UserName, AnAdmin.Email, AnAdmin.Password, AnAdmin.Order);
+            //test to see that the result is correct
+            Assert.AreEqual(Error, "");
+        }
+        [TestMethod]
+        public void UserNameMinLessOne()
+        {
+            //create an instance of the class we want to create
+            clsAdmin AnAdmin = new clsAdmin();
+            //string variable to store any error message
+            String Error = "";
+            //create some test data to pass to the method
+            string UserName = ""; //this should trigger an error
+            //invoke the method
+            Error = AnAdmin.Valid(UserName, AnAdmin.Email, AnAdmin.Password, AnAdmin.Order);
+            //test to see that the result is correct
+            Assert.AreNotEqual(Error, "");
+        }
+        [TestMethod]
+        public void UserNameMin()
+        {
+            //create an instance of the class we want to create
+            clsAdmin AnAdmin = new clsAdmin();
+            //string variable to store any error message
+            String Error = "";
+            //create some test data to pass to the method
+            string UserName = "a"; //this should be ok
+                                   //invoke the method
+            Error = AnAdmin.Valid(UserName, AnAdmin.Email, AnAdmin.Password, AnAdmin.Order);
+            //test to see that the result is correct
+            Assert.AreEqual(Error, "");
+        }
+        [TestMethod]
+        public void UserNameMinPlusOne()
+        {
+            //create an instance of the class we want to create
+            clsAdmin AnAdmin = new clsAdmin();
+            //string variable to store any error message
+            String Error = "";
+            //create some test data to pass to the method
+            string UserName = "aa"; //this should be ok
+                                    //invoke the method
+            Error = AnAdmin.Valid(UserName, AnAdmin.Email, AnAdmin.Password, AnAdmin.Order);
+            //test to see that the result is correct
+            Assert.AreEqual(Error, "");
+        }
+        [TestMethod]
+        public void UserNameMaxLessOne()
+        {
+            //create an instance of the class we want to create
+            clsAdmin AnAdmin = new clsAdmin();
+            //string variable to store any error message
+            String Error = "";
+            //create some test data to pass to the method
+            string UserName = "aaaaa"; //this should be ok
+            //invoke the method
+            Error = AnAdmin.Valid(UserName, AnAdmin.Email, AnAdmin.Password, AnAdmin.Order);
+            //test to see that the result is correct
+            Assert.AreEqual(Error, "");
+        }
+        [TestMethod]
+        public void UserNameMax()
+        {
+            //create an instance of the class we want to create
+            clsAdmin AnAdmin = new clsAdmin();
+            //string variable to store any error message
+            String Error = "";
+            //create some test data to pass to the method
+            string UserName = "aaaaaa"; //this should be ok
+            //invoke the method
+            Error = AnAdmin.Valid(UserName, AnAdmin.Email, AnAdmin.Password, AnAdmin.Order);
+            //test to see that the result is correct
+            Assert.AreEqual(Error, "");
+        }
+        [TestMethod]
+        public void UserNameMid()
+        {
+            //create an instance of the class we want to create
+            clsAdmin AnAdmin = new clsAdmin();
+            //string variable to store any error message
+            String Error = "";
+            //create some test data to pass to the method
+            string UserName = "aaa"; //this should be ok
+            //invoke the method
+            Error = AnAdmin.Valid(UserName, AnAdmin.Email, AnAdmin.Password, AnAdmin.Order);
+            //test to see that the result is correct
+            Assert.AreEqual(Error, "");
+        }
+        [TestMethod]
+        public void UserNameMaxPlusOne()
+        {
+            //create an instance of the class we want to create
+            clsAdmin AnAdmin = new clsAdmin();
+            //string variable to store any error message
+            String Error = "";
+            //create some test data to pass to the method
+            string UserName = "aaaaaaa"; //this should trigger an error
+                                         //invoke the method
+            Error = AnAdmin.Valid(UserName, AnAdmin.Email, AnAdmin.Password, AnAdmin.Order);
+            //test to see that the result is correct
+            Assert.AreNotEqual(Error, "");
+        }
+        [TestMethod]
+        public void UserNameExtremeMax()
+        {
+            //create an instance of the class we want to create
+            clsAdmin AnAdmin = new clsAdmin();
+            //string variable to store any error message
+            String Error = "";
+            //create some test data to pass to the method
+            string UserName = "";
+            UserName = UserName.PadRight(500, 'a'); //this should fail
+                                                    //invoke the method
+            Error = AnAdmin.Valid(UserName, AnAdmin.Email, AnAdmin.Password, AnAdmin.Order);
+            //test to see that the result is correct
+            Assert.AreNotEqual(Error, "");
+        }
     }
 }

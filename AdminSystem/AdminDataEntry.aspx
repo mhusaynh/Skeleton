@@ -39,10 +39,10 @@
             &nbsp;</p>
         <p>
             <asp:Label ID="lblUsername" runat="server" style="z-index: 1; left: 9px; top: 95px; position: absolute; height: 22px; width: 82px;" Text="UserName"></asp:Label>
-            <asp:Button ID="btnFind" runat="server" Height="31px" OnClick="btnFind_Click" Text="Find" width="60px" />
         </p>
         <p>
-            &nbsp;</p>
+            <asp:Button ID="btnFind" runat="server" Height="31px" OnClick="btnFind_Click" Text="Find" width="60px" Style="z-index: 1; left: 365px; top: 87px; position: absolute"  />
+        </p>
         <p>
             &nbsp;</p>
     </form>

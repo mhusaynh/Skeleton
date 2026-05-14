@@ -128,5 +128,25 @@ namespace ClassLibrary
 
             }
         }
+
+        public string Valid(string userName, string email, string password, string order)
+        {
+            //Create a string variable to store the error
+             String Error = "";
+            //if the userName is blank
+            if (userName.Length == 0)
+            {
+                //record the error
+                Error = Error + "The user name may not be blank : ";
+            }
+            //if the userName is greater than 6 characters
+            if (userName.Length > 6)
+            {
+                //record the error
+                Error = Error + "The user name must be less than 6 characters : ";
+            }
+            //return any error messages
+            return Error;
+        }
     }
 }
