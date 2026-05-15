@@ -7,6 +7,12 @@ namespace Testing2
     [TestClass]
     public class tstAdmin
     {
+        //good test data
+        //create some test data to pass to the method
+        string UserName = "John";
+        string Email = "john12@gmail.com";
+        string Password = "john123";
+        string Order = "22";
 
         /******************INSTANCE OF THE CLASS TEST******************/
 
@@ -247,7 +253,7 @@ namespace Testing2
             //string variable to store any error message
             String Error = "";
             //invoke the method
-            Error = AnAdmin.Valid(AnAdmin.UserName, AnAdmin.Email, AnAdmin.Password, AnAdmin.Order);
+            Error = AnAdmin.Valid(UserName, Email, Password, Order);
             //test to see that the result is correct
             Assert.AreEqual(Error, "");
         }
@@ -261,7 +267,7 @@ namespace Testing2
             //create some test data to pass to the method
             string UserName = ""; //this should trigger an error
             //invoke the method
-            Error = AnAdmin.Valid(UserName, AnAdmin.Email, AnAdmin.Password, AnAdmin.Order);
+            Error = AnAdmin.Valid(UserName, Email, Password, Order);
             //test to see that the result is correct
             Assert.AreNotEqual(Error, "");
         }
@@ -275,7 +281,7 @@ namespace Testing2
             //create some test data to pass to the method
             string UserName = "a"; //this should be ok
                                    //invoke the method
-            Error = AnAdmin.Valid(UserName, AnAdmin.Email, AnAdmin.Password, AnAdmin.Order);
+            Error = AnAdmin.Valid(UserName, Email, Password, Order);
             //test to see that the result is correct
             Assert.AreEqual(Error, "");
         }
@@ -289,7 +295,7 @@ namespace Testing2
             //create some test data to pass to the method
             string UserName = "aa"; //this should be ok
                                     //invoke the method
-            Error = AnAdmin.Valid(UserName, AnAdmin.Email, AnAdmin.Password, AnAdmin.Order);
+            Error = AnAdmin.Valid(UserName, Email, Password, Order);
             //test to see that the result is correct
             Assert.AreEqual(Error, "");
         }
@@ -303,7 +309,7 @@ namespace Testing2
             //create some test data to pass to the method
             string UserName = "aaaaa"; //this should be ok
             //invoke the method
-            Error = AnAdmin.Valid(UserName, AnAdmin.Email, AnAdmin.Password, AnAdmin.Order);
+            Error = AnAdmin.Valid(UserName, Email, Password, Order);
             //test to see that the result is correct
             Assert.AreEqual(Error, "");
         }
@@ -317,7 +323,7 @@ namespace Testing2
             //create some test data to pass to the method
             string UserName = "aaaaaa"; //this should be ok
             //invoke the method
-            Error = AnAdmin.Valid(UserName, AnAdmin.Email, AnAdmin.Password, AnAdmin.Order);
+            Error = AnAdmin.Valid(UserName, Email, Password, Order);
             //test to see that the result is correct
             Assert.AreEqual(Error, "");
         }
@@ -331,7 +337,7 @@ namespace Testing2
             //create some test data to pass to the method
             string UserName = "aaa"; //this should be ok
             //invoke the method
-            Error = AnAdmin.Valid(UserName, AnAdmin.Email, AnAdmin.Password, AnAdmin.Order);
+            Error = AnAdmin.Valid(UserName, Email, Password, Order);
             //test to see that the result is correct
             Assert.AreEqual(Error, "");
         }
@@ -345,7 +351,7 @@ namespace Testing2
             //create some test data to pass to the method
             string UserName = "aaaaaaa"; //this should trigger an error
                                          //invoke the method
-            Error = AnAdmin.Valid(UserName, AnAdmin.Email, AnAdmin.Password, AnAdmin.Order);
+            Error = AnAdmin.Valid(UserName, Email, Password, Order);
             //test to see that the result is correct
             Assert.AreNotEqual(Error, "");
         }
@@ -359,10 +365,339 @@ namespace Testing2
             //create some test data to pass to the method
             string UserName = "";
             UserName = UserName.PadRight(500, 'a'); //this should fail
-                                                    //invoke the method
-            Error = AnAdmin.Valid(UserName, AnAdmin.Email, AnAdmin.Password, AnAdmin.Order);
+            //invoke the method
+            Error = AnAdmin.Valid(UserName, Email, Password, Order);
             //test to see that the result is correct
             Assert.AreNotEqual(Error, "");
+        }
+        [TestMethod]
+        public void EmailMinLessOne()
+        {
+            //create an instance of the class we want to create
+            clsAdmin AnAdmin = new clsAdmin();
+            //string variable to store any error message
+            String Error = "";
+            //create some test data to pass to the method
+            string Email = ""; //this should trigger an error
+            //invoke the method
+            Error = AnAdmin.Valid(UserName, Email, Password, Order);
+            //test to see that the result is correct
+            Assert.AreNotEqual(Error, "");
+        }
+        [TestMethod]
+        public void EmailMin()
+        {
+            //create an instance of the class we want to create
+            clsAdmin AnAdmin = new clsAdmin();
+            //string variable to store any error message
+            String Error = "";
+            //create some test data to pass to the method
+            string Email = "a"; //this should be ok
+            //invoke the method
+            Error = AnAdmin.Valid(UserName, Email, Password, Order);
+            //test to see that the result is correct
+            Assert.AreEqual(Error, "");
+        }
+        [TestMethod]
+        public void EmailMinPlusOne()
+        {
+            //create an instance of the class we want to create
+            clsAdmin AnAdmin = new clsAdmin();
+            //string variable to store any error message
+            String Error = "";
+            //create some test data to pass to the method
+            string Email = "aa"; //this should be ok
+                                 //invoke the method
+            Error = AnAdmin.Valid(UserName, Email, Password, Order);
+            //test to see that the result is correct
+            Assert.AreEqual(Error, "");
+        }
+        [TestMethod]
+        public void EmailMaxLessOne()
+        { //create an instance of the class we want to create
+            clsAdmin AnAdmin = new clsAdmin();
+            //string variable to store any error message
+            String Error = "";
+            //create some test data to pass to the method
+            string Email = "";
+            Email = Email.PadRight(49, 'a');
+            //invoke the method
+            Error = AnAdmin.Valid(UserName, Email, Password, Order);
+            //test to see that the result is correct
+            Assert.AreEqual(Error, "");
+        }
+        [TestMethod]
+        public void EmailMax()
+        {
+            //create an instance of the class we want to create
+            clsAdmin AnAdmin = new clsAdmin();
+            //string variable to store any error message
+            String Error = "";
+            //create some test data to pass to the method
+            string Email = "";
+            Email = Email.PadRight(50, 'a');
+            //invoke the method
+            Error = AnAdmin.Valid(UserName, Email, Password, Order);
+            //test to see that the result is correct
+            Assert.AreEqual(Error, "");
+        }
+        [TestMethod]
+        public void EmailMaxPlusOne()
+        {
+            //create an instance of the class we want to create
+            clsAdmin AnAdmin = new clsAdmin();
+            //string variable to store any error message
+            String Error = "";
+            //create some test data to pass to the method
+            string Email = "";
+            //invoke the method
+            Error = AnAdmin.Valid(UserName, Email, Password, Order);
+            //test to see that the result is correct
+            Assert.AreNotEqual(Error, "");
+        }
+        [TestMethod]
+        public void EmailMid()
+        {
+            //create an instance of the class we want to create
+            clsAdmin AnAdmin = new clsAdmin();
+            //string variable to store any error message
+            String Error = "";
+            //create some test data to pass to the method
+            string Email = "";
+            Email = Email.PadRight(25, 'a');
+            //invoke the method
+            Error = AnAdmin.Valid(UserName, Email, Password, Order);
+            //test to see that the result is correct
+            Assert.AreEqual(Error, "");
+        }
+        [TestMethod]
+        public void EmailExtremeMax()
+        {
+            //create an instance of the class we want to create
+            clsAdmin AnAdmin = new clsAdmin();
+            //string variable to store any error message
+            String Error = "";
+            //create some test data to pass to the method
+            string Email = "";
+            Email = Email.PadRight(500, 'a'); //this should fail
+            //invoke the method
+            Error = AnAdmin.Valid(UserName, Email, Password, Order);
+            //test to see that the result is correct
+            Assert.AreNotEqual(Error, "");
+        }
+        [TestMethod]
+        public void PasswordMinLessOne()
+        {
+            //create an instance of the class we want to create
+            clsAdmin AnAdmin = new clsAdmin();
+            //string variable to store any error message
+            String Error = "";
+            //create some test data to pass to the method
+            string Password = ""; //this should trigger an error
+            //invoke the method
+            Error = AnAdmin.Valid(UserName, Email, Password, Order);
+            //test to see that the result is correct
+            Assert.AreNotEqual(Error, "");
+        }
+        [TestMethod]
+        public void PasswordMin()
+        {
+            //create an instance of the class we want to create
+            clsAdmin AnAdmin = new clsAdmin();
+            //string variable to store any error message
+            String Error = "";
+            //create some test data to pass to the method
+            string Password = "a"; //this should be ok
+            //invoke the method
+            Error = AnAdmin.Valid(UserName, Email, Password, Order);
+            //test to see that the result is correct
+            Assert.AreEqual(Error, "");
+        }
+         [TestMethod]
+         public void PasswordMinPlusOne()
+            {
+            //create an instance of the class we want to create
+            clsAdmin AnAdmin = new clsAdmin();
+            //string variable to store any error message
+            String Error = "";
+            //create some test data to pass to the method
+            string Password = "aa"; //this should be ok
+             //invoke the method
+            Error = AnAdmin.Valid(UserName, Email, Password, Order);
+            //test to see that the result is correct
+            Assert.AreEqual(Error, "");
+        }
+       [TestMethod]
+        public void PasswordMaxLessOne()
+        {
+            //create an instance of the class we want to create
+            clsAdmin AnAdmin = new clsAdmin();
+            //string variable to store any error message
+            String Error = "";
+            //create some test data to pass to the method
+            string Password = "";
+            Password = Password.PadRight(15, 'a');
+            //invoke the method
+            Error = AnAdmin.Valid(UserName, Email, Password, Order);
+            //test to see that the result is correct
+            Assert.AreEqual(Error, "");
+        }
+         [TestMethod]
+         public void PasswordMax()
+        {
+            //create an instance of the class we want to create
+            clsAdmin AnAdmin = new clsAdmin();
+            //string variable to store any error message
+            String Error = "";
+            //create some test data to pass to the method
+            string Password = "";
+            Password = Password.PadRight(16, 'a');
+             //invoke the method
+            Error = AnAdmin.Valid(UserName, Email, Password, Order);
+             //test to see that the result is correct
+            Assert.AreEqual(Error, "");
+         }
+        [TestMethod]
+        public void PasswordMaxPlusOne()
+        {
+            //create an instance of the class we want to create
+            clsAdmin AnAdmin = new clsAdmin();
+            //string variable to store any error message
+            String Error = "";
+            //create some test data to pass to the method
+            string Password = "";
+            //invoke the method
+            Error = AnAdmin.Valid(UserName, Email, Password, Order);
+            //test to see that the result is correct
+            Assert.AreNotEqual(Error, "");
+        }
+        [TestMethod]
+        public void PasswordMid()
+        {
+            //create an instance of the class we want to create
+            clsAdmin AnAdmin = new clsAdmin();
+            //string variable to store any error message
+            String Error = "";
+            //create some test data to pass to the method
+            string Password = "";
+            Password = Password.PadRight(8, 'a');
+            //invoke the method
+            Error = AnAdmin.Valid(UserName, Email, Password, Order);
+            //test to see that the result is correct
+            Assert.AreEqual(Error, "");
+        }
+         [TestMethod]
+         public void PasswordExtremeMax()
+        {
+            //create an instance of the class we want to create
+            clsAdmin AnAdmin = new clsAdmin();
+            //string variable to store any error message
+            String Error = "";
+            //create some test data to pass to the method
+            string Password = "";
+            Password = Password.PadRight(500, 'a'); //this should fail
+             //invoke the method
+            Error = AnAdmin.Valid(UserName, Email, Password, Order);
+             //test to see that the result is correct
+            Assert.AreNotEqual(Error, "");
+        }
+        [TestMethod]
+        public void OrderMinLessOne()
+        {
+            //create an instance of the class we want to create
+            clsAdmin AnAdmin = new clsAdmin();
+            //string variable to store any error message
+            String Error = "";
+            //create some test data to pass to the method
+            string Order = ""; //this should trigger an error
+            //invoke the method
+            Error = AnAdmin.Valid(UserName, Email, Password, Order);
+            //test to see that the result is correct
+            Assert.AreNotEqual(Error, "");
+         }
+         [TestMethod]
+         public void OrderMin()
+        {
+            //create an instance of the class we want to create
+            clsAdmin AnAdmin = new clsAdmin();
+            //string variable to store any error message
+            String Error = "";
+            //create some test data to pass to the method
+            string Order = "a"; //this should be ok
+             //invoke the method
+            Error = AnAdmin.Valid(UserName, Email, Password, Order);
+             //test to see that the result is correct
+            Assert.AreEqual(Error, "");
+         }
+         [TestMethod]
+         public void OrderMinPlusOne()
+        {
+            //create an instance of the class we want to create
+            clsAdmin AnAdmin = new clsAdmin();
+            //string variable to store any error message
+            String Error = "";
+            //create some test data to pass to the method
+            string Order = "aa"; //this should be ok
+             //invoke the method
+            Error = AnAdmin.Valid(UserName, Email, Password, Order);
+             //test to see that the result is correct
+            Assert.AreEqual(Error, "");
+         }
+        [TestMethod]
+        public void OrderMaxLessOne()
+        {
+            //create an instance of the class we want to create
+            clsAdmin AnAdmin = new clsAdmin();
+            //string variable to store any error message
+            String Error = "";
+            //create some test data to pass to the method
+            string Order = "aaaaa";
+            //invoke the method
+            Error = AnAdmin.Valid(UserName, Email, Password, Order);
+            //test to see that the result is correct
+            Assert.AreEqual(Error, "");
+        }
+        [TestMethod]
+        public void OrderMax()
+        {
+            //create an instance of the class we want to create
+            clsAdmin AnAdmin = new clsAdmin();
+            //string variable to store any error message
+            String Error = "";
+            //create some test data to pass to the method
+            string Order = "aaaaaa";
+            //invoke the method
+            Error = AnAdmin.Valid(UserName, Email, Password, Order);
+            //test to see that the result is correct
+            Assert.AreEqual(Error, "");
+        }
+        [TestMethod]
+        public void OrderMaxPlusOne()
+        {
+            //create an instance of the class we want to create
+            clsAdmin AnAdmin = new clsAdmin();
+            //string variable to store any error message
+            String Error = "";
+            //create some test data to pass to the method
+            string Order = "aaaaaaa"; //this should trigger an error
+            //invoke the method
+            Error = AnAdmin.Valid(UserName, Email, Password, Order);
+            //test to see that the result is correct
+            Assert.AreNotEqual(Error, "");
+        }
+        [TestMethod]
+        public void OrderMid()
+        {
+            //create an instance of the class we want to create
+            clsAdmin AnAdmin = new clsAdmin();
+            //string variable to store any error message
+            String Error = "";
+            //create some test data to pass to the method
+            string Order = "aaa";
+            //invoke the method
+            Error = AnAdmin.Valid(UserName, Email, Password, Order);
+            //test to see that the result is correct
+            Assert.AreEqual(Error, "");
         }
     }
 }

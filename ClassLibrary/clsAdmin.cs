@@ -132,7 +132,7 @@ namespace ClassLibrary
         public string Valid(string userName, string email, string password, string order)
         {
             //Create a string variable to store the error
-             String Error = "";
+            String Error = "";
             //if the userName is blank
             if (userName.Length == 0)
             {
@@ -145,8 +145,47 @@ namespace ClassLibrary
                 //record the error
                 Error = Error + "The user name must be less than 6 characters : ";
             }
+            // is the email blank
+            if (email.Length == 0)
+            {
+                //record the error
+                Error = Error + "The email may not be blank : ";
+            }
+            //if the email is greater than 50 characters
+            if (email.Length > 50)
+            {
+                //record the error
+                Error = Error + "The email must be less than 50 characters : ";
+            }
+            //is the password blank
+            if (password.Length == 0)
+            {
+                //record the error
+                Error = Error + "The password may not be blank : ";
+            }
+            //if the password is greater than 16 characters
+            if (password.Length > 16)
+            {
+                //record the error
+                Error = Error + "The password must be less than 16 characters : ";
+            }
+            //is the order blank
+            if (order.Length == 0)
+            {
+                //record the error
+                Error = Error + "The order may not be blank : ";
+            }
+            //if the order is greater than 6 characters
+            if (order.Length > 6)
+            {
+                //record the error
+                Error = Error + "The order must be less than 6 characters : ";
+            }
             //return any error messages
             return Error;
+            
         }
-    }
+       
+        
+     }
 }
