@@ -17,24 +17,43 @@ public partial class _1_DataEntry : System.Web.UI.Page
 
     protected void btnOK_Click(object sender, EventArgs e)
     {
-        //create a new instance of clsUserName
+        //create a new instance of the Admin class
         clsAdmin AnAdmin = new clsAdmin();
-        //capture the Adminid
-        AnAdmin.Adminid = Convert.ToInt32(txtAdminid.Text);
         //capture the Username
-        AnAdmin.UserName = txtUserName.Text;
+        string UserName = txtUserName.Text;
         //capture the Password
-        AnAdmin.Password = txtPassword.Text;
+        string Password = txtPassword.Text;
         //capture the Email
-        AnAdmin.Email = txtEmail.Text;
+        string Email = txtEmail.Text;
         //capture the Order
-        AnAdmin.Order = txtOrder.Text;
+        string Order = txtOrder.Text;
         //capture the Stock
-        AnAdmin.Stock = chkStock.Checked;
-        //store the Adminid in the session object
-        Session["AnAdmin"] = AnAdmin;
-        //navigate to the viewer page
-        Response.Redirect("AdminViewer.aspx");
+        string Stock = chkStock.Text;
+        //variable to store any error messages
+        string Error = "";
+        //validate the data
+        Error = AnAdmin.Valid(UserName, Email, Password, Order);
+        if (Error == "")
+        {
+            //capture the Username
+            AnAdmin.UserName = UserName;
+            //capture the Password
+            AnAdmin.Password = Password;
+            //capture the Email
+            AnAdmin.Email = Email;
+            //capture the Order
+            AnAdmin.Order = Order;
+            //store the admin object in the session object
+            Session["AnAdmin"] = AnAdmin;
+            //navigate to the viewer page
+            Response.Redirect("AdminViewer.aspx");
+        }
+        else
+        {
+            //display the error message
+            IbIError.Text = Error;
+        }
+
     }
 
     protected void btnFind_Click(object sender, EventArgs e)
