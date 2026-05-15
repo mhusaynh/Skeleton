@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Security.Cryptography.X509Certificates;
 
 namespace ClassLibrary
 {
@@ -143,6 +144,20 @@ namespace ClassLibrary
                 //return false indicating there is a problem
                 return false;
             }
+        }
+
+        public string Valid(string Product, string Price, string DateAdded, string Quantity)
+        {
+            //create a string variable to store the error
+            String Error = "";
+            //if the Product is blank
+            if (Product == null)
+            {
+                //record the error
+                Error = Error + "The Product may be blank : ";
+            }
+            //return any error message
+            return Error;
         }
     }
 }
