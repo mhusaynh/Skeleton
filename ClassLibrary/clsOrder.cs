@@ -150,13 +150,99 @@ namespace ClassLibrary
         {
             //create a string variable to store the error
             String Error = "";
+            //create a temporary variable to store the date values
+            DateTime DateTemp;
             //if the Product is blank
             if (Product == null)
             {
                 //record the error
                 Error = Error + "The Product may be blank : ";
             }
-            //return any error message
+
+            //if the product is not blank
+            if (Product >= null)
+            {
+                //record the error
+                Error = Error + "The product is not blank : ";
+            }
+
+            try
+            {
+                //convert the price to a decimal
+                decimal PriceTemp = Convert.ToDecimal(Price);
+
+                //check if price is below 0
+                if (PriceTemp < 0)
+                {
+                    //record the error
+                    Error = Error + "The price can't be negative : ";
+                }
+                
+                //checks if price is too big
+                if (PriceTemp > 10000)
+                {
+                    //record the error
+                    Error = Error + "The price can't be higher than 10000 : ";
+                }
+            }
+            catch
+            {
+                //record the error if conversion fails
+                Error = Error + "The price isn't a valid number : ";
+            }
+
+            //create an instance of DateTime to compare with DateTemp
+            //in the if statements
+            DateTime DateComp = DateTime.Now.Date;
+
+            try
+            {
+                //copy the dateAdded value to the DateTemp variable
+                DateTemp = Convert.ToDateTime(DateAdded);
+                if (DateTemp < DateTime.Now.Date)
+                {
+                    //record the error
+                    Error = Error + "The date cannot be in the past : ";
+                }
+                //check to see if the date is greater than today's date
+                if (DateTemp > DateTime.Now.Date)
+                {
+                    //record the error
+                    Error = Error + "The date cannot be in the future : ";
+                }
+            }
+            catch
+            {
+                //record the error
+                Error = Error + "The date was not a valid date : ";
+            }
+
+            try
+            {
+                //converts the quantity to an integer
+                int QuantityTemp = Convert.ToInt32(Quantity);
+
+                //checks if quantity is below zero
+                if (QuantityTemp < 0)
+                {
+                    //record the error
+                    Error = Error + "The quantity can't be negative : ";
+                }
+
+                //checks if quantity is too big
+                if (QuantityTemp > 10000)
+                {
+                    //record the error
+                    Error = Error + "The quantity can't be higher than 10000 : ";
+                }
+            }
+            catch
+            {
+                //record the error if conversion fails
+                Error = Error + "The quantity isn't a valid number : ";
+            }
+
+            //returns the error string
             return Error;
         }
     }
