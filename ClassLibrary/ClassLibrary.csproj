@@ -44,6 +44,7 @@
     <Compile Include="clsAdmin.cs" />
     <Compile Include="clsAdminCollection.cs" />
     <Compile Include="clsDataConnection.cs" />
+    <Compile Include="clsproduct.cs" />
     <Compile Include="clsOrder.cs" />
     <Compile Include="clsUser.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
