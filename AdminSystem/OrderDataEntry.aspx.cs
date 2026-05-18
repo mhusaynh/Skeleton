@@ -52,7 +52,7 @@ public partial class _1_DataEntry : System.Web.UI.Page
             //capture the Price
             AnOrder.Price = Convert.ToDecimal(Price);
             //capture the DateAdded
-            AnOrder.DateAdded = Convert.ToDateTime(DateAdded);
+            AnOrder.DateAdded = Convert.ToDateTime(DateTime.Now);
             //capture the Quantity
             AnOrder.Quantity = Convert.ToInt32(Quantity);
             //store the address in the session object
