@@ -30,7 +30,7 @@ namespace Testing3
             clsOrder TestItem = new clsOrder();
             //set its properties
             TestItem.OrderId = 1;
-            TestItem.Product = "Nike Pro Max";
+            TestItem.Product = "Nike Air Force";
             TestItem.Price = 25.99m;
             TestItem.DateAdded = DateTime.Now;
             TestItem.Quantity = 2;
@@ -52,7 +52,7 @@ namespace Testing3
             clsOrder TestOrders = new clsOrder();
             //set the properties of the test object
             TestOrders.OrderId = 1;
-            TestOrders.Product = "Nike Pro Max";
+            TestOrders.Product = "Nike Air Force";
             TestOrders.Price = 25.99m;
             TestOrders.DateAdded = DateTime.Now;
             TestOrders.Quantity = 2;
@@ -76,7 +76,7 @@ namespace Testing3
             clsOrder TestItem = new clsOrder();
             //set its properties
             TestItem.OrderId = 1;
-            TestItem.Product = "Nike Pro Max";
+            TestItem.Product = "Nike Air Force";
             TestItem.Price = 25.99m;
             TestItem.DateAdded = DateTime.Now;
             TestItem.Quantity = 2;
