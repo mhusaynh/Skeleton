@@ -160,7 +160,7 @@ namespace ClassLibrary
             }
 
             //if the product is not blank
-            if (Product >= null)
+            if (Product != null)
             {
                 //record the error
                 Error = Error + "The product is not blank : ";

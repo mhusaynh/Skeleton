@@ -8,6 +8,8 @@ namespace ClassLibrary
     {
         //privete data member for the list
         List<clsAdmin> mAdminList = new List<clsAdmin>();
+        //private data member for ThisAdmin
+         clsAdmin mThisAdmin = new clsAdmin();
 
         //constructor for the class
         public clsAdminCollection()
@@ -67,6 +69,27 @@ namespace ClassLibrary
                 //we shall worry about this later
             }
         }
-        public clsAdmin ThisAdmin { get; set; }
+        public clsAdmin ThisAdmin
+            {
+            get
+            {
+                //return the private data
+                return mThisAdmin;
+            }
+            set
+            {
+                //set the private data
+                mThisAdmin = value;
+            }
+        }
+
+        public int Add()
+        {
+            //add a record to the database based on the values of mThisAdmin
+            //set the primary key of the new record
+            mThisAdmin.Adminid = 1;
+            //return the primary key of the new record
+            return mThisAdmin.Adminid;
+        }
     }
 }
