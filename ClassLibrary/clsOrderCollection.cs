@@ -45,7 +45,7 @@ namespace ClassLibrary
             //variable to store the record count
             Int32 RecordCount = 0;
             //onject for the data connect
-            clsOrderCollection DB = new clsOrderCollection();
+            clsDataConnection DB = new clsDataConnection();
             //execute the stored procedure
             DB.Execute("sproc_tblOrder_SelectAll");
             //get the count of records

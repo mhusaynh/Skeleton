@@ -146,6 +146,8 @@ namespace ClassLibrary
             }
         }
 
+
+
         public string Valid(string Product, string Price, string DateAdded, string Quantity)
         {
             //create a string variable to store the error
@@ -160,10 +162,10 @@ namespace ClassLibrary
             }
 
             //if the product is not blank
-            if (Product >= null)
+            if (Product != "")
             {
                 //record the error
-                Error = Error + "The product is not blank : ";
+                Error = Error + "";
             }
 
             try
