@@ -392,7 +392,7 @@ namespace Testing2
             //string variable to store any error message
             String Error = "";
             //create some test data to pass to the method
-            string Email = "a"; //this should be ok
+            string Email = "a@a.com"; //this should be ok
             //invoke the method
             Error = AnAdmin.Valid(UserName, Email, Password, Order);
             //test to see that the result is correct
@@ -406,8 +406,8 @@ namespace Testing2
             //string variable to store any error message
             String Error = "";
             //create some test data to pass to the method
-            string Email = "aa"; //this should be ok
-                                 //invoke the method
+            string Email = "aa@a.com"; //this should be ok
+                                       //invoke the method
             Error = AnAdmin.Valid(UserName, Email, Password, Order);
             //test to see that the result is correct
             Assert.AreEqual(Error, "");
@@ -513,21 +513,21 @@ namespace Testing2
             //test to see that the result is correct
             Assert.AreEqual(Error, "");
         }
-         [TestMethod]
-         public void PasswordMinPlusOne()
-            {
+        [TestMethod]
+        public void PasswordMinPlusOne()
+        {
             //create an instance of the class we want to create
             clsAdmin AnAdmin = new clsAdmin();
             //string variable to store any error message
             String Error = "";
             //create some test data to pass to the method
             string Password = "aa"; //this should be ok
-             //invoke the method
+                                    //invoke the method
             Error = AnAdmin.Valid(UserName, Email, Password, Order);
             //test to see that the result is correct
             Assert.AreEqual(Error, "");
         }
-       [TestMethod]
+        [TestMethod]
         public void PasswordMaxLessOne()
         {
             //create an instance of the class we want to create
@@ -542,8 +542,8 @@ namespace Testing2
             //test to see that the result is correct
             Assert.AreEqual(Error, "");
         }
-         [TestMethod]
-         public void PasswordMax()
+        [TestMethod]
+        public void PasswordMax()
         {
             //create an instance of the class we want to create
             clsAdmin AnAdmin = new clsAdmin();
@@ -552,11 +552,11 @@ namespace Testing2
             //create some test data to pass to the method
             string Password = "";
             Password = Password.PadRight(16, 'a');
-             //invoke the method
+            //invoke the method
             Error = AnAdmin.Valid(UserName, Email, Password, Order);
-             //test to see that the result is correct
+            //test to see that the result is correct
             Assert.AreEqual(Error, "");
-         }
+        }
         [TestMethod]
         public void PasswordMaxPlusOne()
         {
@@ -586,8 +586,8 @@ namespace Testing2
             //test to see that the result is correct
             Assert.AreEqual(Error, "");
         }
-         [TestMethod]
-         public void PasswordExtremeMax()
+        [TestMethod]
+        public void PasswordExtremeMax()
         {
             //create an instance of the class we want to create
             clsAdmin AnAdmin = new clsAdmin();
@@ -596,9 +596,9 @@ namespace Testing2
             //create some test data to pass to the method
             string Password = "";
             Password = Password.PadRight(500, 'a'); //this should fail
-             //invoke the method
+                                                    //invoke the method
             Error = AnAdmin.Valid(UserName, Email, Password, Order);
-             //test to see that the result is correct
+            //test to see that the result is correct
             Assert.AreNotEqual(Error, "");
         }
         [TestMethod]
@@ -614,9 +614,9 @@ namespace Testing2
             Error = AnAdmin.Valid(UserName, Email, Password, Order);
             //test to see that the result is correct
             Assert.AreNotEqual(Error, "");
-         }
-         [TestMethod]
-         public void OrderMin()
+        }
+        [TestMethod]
+        public void OrderMin()
         {
             //create an instance of the class we want to create
             clsAdmin AnAdmin = new clsAdmin();
@@ -624,13 +624,13 @@ namespace Testing2
             String Error = "";
             //create some test data to pass to the method
             string Order = "a"; //this should be ok
-             //invoke the method
+                                //invoke the method
             Error = AnAdmin.Valid(UserName, Email, Password, Order);
-             //test to see that the result is correct
+            //test to see that the result is correct
             Assert.AreEqual(Error, "");
-         }
-         [TestMethod]
-         public void OrderMinPlusOne()
+        }
+        [TestMethod]
+        public void OrderMinPlusOne()
         {
             //create an instance of the class we want to create
             clsAdmin AnAdmin = new clsAdmin();
@@ -638,11 +638,11 @@ namespace Testing2
             String Error = "";
             //create some test data to pass to the method
             string Order = "aa"; //this should be ok
-             //invoke the method
+                                 //invoke the method
             Error = AnAdmin.Valid(UserName, Email, Password, Order);
-             //test to see that the result is correct
+            //test to see that the result is correct
             Assert.AreEqual(Error, "");
-         }
+        }
         [TestMethod]
         public void OrderMaxLessOne()
         {
@@ -788,5 +788,32 @@ namespace Testing2
             //test to see that the two values are the same
             Assert.AreEqual(AllAdmins.Count, 5);
         }
+        [TestMethod]
+        public void AddMethodOK()
+        {
+            //Create an instance of the class we want to create
+            clsAdminCollection AllAdmins = new clsAdminCollection();
+            //Create some test data to assign to the property
+            clsAdmin TestItem = new clsAdmin();
+            //variable to store the primary key
+            Int32 PrimaryKey = 0;
+            //Set the properties of the test object
+            TestItem.Stock = true;
+            TestItem.Adminid = 1;
+            TestItem.UserName = "John";
+            TestItem.Email = "john12@gmail.com";
+            TestItem.Password = "john123";
+            TestItem.Order = "22";
+            //set ThisAdmin to the test data
+            AllAdmins.ThisAdmin = TestItem;
+            //add the record
+            PrimaryKey = AllAdmins.Add();
+            //set the primary key of the test data
+            TestItem.Adminid = PrimaryKey;
+            //find the record
+            AllAdmins.ThisAdmin.Find(PrimaryKey);
+            //test to see that the two values are the same
+            Assert.AreEqual(AllAdmins.ThisAdmin, TestItem);
         }
+    }
     }
