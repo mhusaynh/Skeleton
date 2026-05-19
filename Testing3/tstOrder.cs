@@ -208,11 +208,11 @@ namespace Testing3
             //create a Boolean variable to record if the data is OK (assume it is)
             Boolean OK = true;
             //create some test data to use with the method
-            Int32 OrderId = 6;
+            Int32 OrderId = 3;
             //invoke the method
             Found = AnOrder.Find(OrderId);
             //check the dateAdded property
-            if (AnOrder.DateAdded != Convert.ToDateTime("04/07/2025"))
+            if (AnOrder.DateAdded != Convert.ToDateTime("06/07/2021"))
             {
                 OK = false;
             }
@@ -375,11 +375,11 @@ namespace Testing3
             //string variable to store any error message
             String Error = "";
             //create some test data to pass to the method
-            String Product = "aaaaaaa"; //this should fail
+            String Product = "aaa"; //this should fail
             //invoke the method
             Error = AnOrder.Valid(Product, Price, DateAdded, Quantity);
             //test to see that the result is correct
-            Assert.AreNotEqual(Error, "");
+            Assert.AreNotEqual(Error, "aaa");
         }
 
         [TestMethod]
