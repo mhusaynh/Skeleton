@@ -86,10 +86,16 @@ namespace ClassLibrary
         public int Add()
         {
             //add a record to the database based on the values of mThisAdmin
-            //set the primary key of the new record
-            mThisAdmin.Adminid = 1;
-            //return the primary key of the new record
-            return mThisAdmin.Adminid;
+           //connect to the database
+            clsDataConnection DB = new clsDataConnection();
+            //set the parameters for the stored procedure
+            DB.AddParameter("@UserName", mThisAdmin.UserName);
+            DB.AddParameter("@Email", mThisAdmin.Email);
+            DB.AddParameter("@Password", mThisAdmin.Password);
+            DB.AddParameter("@Order", mThisAdmin.Order);
+            DB.AddParameter("@Stock", mThisAdmin.Stock);
+            //execute the query returning the primary key value
+            return DB.Execute("sproc_tblAdmin_Insert");
         }
     }
 }

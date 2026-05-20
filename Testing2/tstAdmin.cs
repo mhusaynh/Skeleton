@@ -730,7 +730,7 @@ namespace Testing2
             //Create an instance of the class we want to create
             clsAdminCollection AllAdmins = new clsAdminCollection();
             //Create some test data to assign to the property
-            Int32 SomeCount = 5;
+            Int32 SomeCount = 8;
             //Assign the data to the property
             AllAdmins.Count = SomeCount;
             //Test to see that the two values are the same
@@ -786,7 +786,7 @@ namespace Testing2
             //Create an instance of the class we want to create
             clsAdminCollection AllAdmins = new clsAdminCollection();
             //test to see that the two values are the same
-            Assert.AreEqual(AllAdmins.Count, 5);
+            Assert.AreEqual(AllAdmins.Count, 8);
         }
         [TestMethod]
         public void AddMethodOK()

@@ -43,10 +43,16 @@ public partial class _1_DataEntry : System.Web.UI.Page
             AnAdmin.Email = Email;
             //capture the Order
             AnAdmin.Order = Order;
-            //store the admin object in the session object
-            Session["AnAdmin"] = AnAdmin;
-            //navigate to the viewer page
-            Response.Redirect("AdminViewer.aspx");
+            //capture the Stock
+            AnAdmin.Stock = chkStock.Checked;
+            //Create a new instance of the Admin collection
+            clsAdminCollection AdminList = new clsAdminCollection();
+            //set the ThisAdmin property
+            AdminList.ThisAdmin = AnAdmin;
+            //add the new record
+            AdminList.Add();
+            //redirect back to the list page
+            Response.Redirect("AdminList.aspx");
         }
         else
         {
