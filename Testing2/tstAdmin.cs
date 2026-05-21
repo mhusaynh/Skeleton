@@ -815,5 +815,41 @@ namespace Testing2
             //test to see that the two values are the same
             Assert.AreEqual(AllAdmins.ThisAdmin, TestItem);
         }
+        [TestMethod]
+        public void UpdateMethodOK()
+        {
+            //Create an instance of the class we want to create
+            clsAdminCollection AllAdmins = new clsAdminCollection();
+            //Create some test data to assign to the property
+            clsAdmin TestItem = new clsAdmin();
+            //variable to store the primary key
+            Int32 PrimaryKey = 0;
+            //Set the properties of the test object
+            TestItem.Stock = true;
+            TestItem.UserName = "John";
+            TestItem.Email = "john12@gmail.com";
+            TestItem.Password = "john123";
+            TestItem.Order = "22";
+            //set ThisAdmin to the test data
+            AllAdmins.ThisAdmin = TestItem;
+            //add the record
+            PrimaryKey = AllAdmins.Add();
+            //set the primary key of the test data
+            TestItem.Adminid = PrimaryKey;
+            //modify the test data
+            TestItem.Stock = false;
+            TestItem.UserName = "Joy";
+            TestItem.Email = "joy44@gmail.com";
+            TestItem.Password = "joy433";
+            TestItem.Order = "44";
+            //set the record based on the new test data
+            AllAdmins.ThisAdmin = TestItem;
+            //update the record
+            AllAdmins.Update();
+            //find the record
+            AllAdmins.ThisAdmin.Find(PrimaryKey);
+            //test to see that the two values are the same
+            Assert.AreEqual(AllAdmins.ThisAdmin, TestItem);
+        }
     }
-    }
+}
