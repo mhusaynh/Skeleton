@@ -43,80 +43,89 @@ namespace Testing4
         }
 
         [TestMethod]
-        public void AddressIdok()
+        public void ProductIDok()
         {
             //create an instance of the class we want create
             clsproduct Anproduct = new clsproduct();
             //create some test data to assign to the property
             Int32 TestData = 1;
             //assign the data to the property
-            Anproduct.AddressID = TestData;
+            Anproduct.ProductID = TestData;
             //test to see that the two values are the same
-            Assert.AreEqual(Anproduct.AddressID, TestData);
+            Assert.AreEqual(Anproduct.ProductID, TestData);
         }
 
         [TestMethod]
-        public void CountryCodeok()
+        public void ProductNameok()
         {
             //create an instance of the class we want create
             clsproduct Anproduct = new clsproduct();
             //create some test data to assign to the property
-            string TestData = "UK";
+            string TestData = "Test Product";
             //assign the data to the property
-            Anproduct.CountryCode = TestData;
+            Anproduct.ProductName = TestData;
             //test to see that the two values are the same
-            Assert.AreEqual(Anproduct.CountryCode, TestData);
+            Assert.AreEqual(Anproduct.ProductName, TestData);
         }
         [TestMethod]
-        public void HouseNumberok()
+        public void Priceok()
         {
             //create an instance of the class we want create
             clsproduct Anproduct = new clsproduct();
             //create some test data to assign to the property
-            string TestData = "1";
+            decimal TestData = 9.99m;
             //assign the data to the property
-            Anproduct.HouseNumber = TestData;
+            Anproduct.Price = TestData;
             //test to see that the two values are the same
-            Assert.AreEqual(Anproduct.HouseNumber, TestData);
+            Assert.AreEqual(Anproduct.Price, TestData);
         }
-
         [TestMethod]
-        public void Postcodeok()
+        public void Colourok()
         {
             //create an instance of the class we want create
             clsproduct Anproduct = new clsproduct();
             //create some test data to assign to the property
-            string TestData = "BB1 1BB";
+            string TestData = "Red";
             //assign the data to the property
-            Anproduct.Postcode = TestData;
+            Anproduct.Colour = TestData;
             //test to see that the two values are the same
-            Assert.AreEqual(Anproduct.Postcode, TestData);
+            Assert.AreEqual(Anproduct.Colour, TestData);
         }
-
         [TestMethod]
-        public void Streetok()
+        public void Quantityok()
         {
             //create an instance of the class we want create
             clsproduct Anproduct = new clsproduct();
             //create some test data to assign to the property
-            string TestData = "Test Street";
+            Int32 TestData = 100;
             //assign the data to the property
-            Anproduct.Street = TestData;
+            Anproduct.Quantity = TestData;
             //test to see that the two values are the same
-            Assert.AreEqual(Anproduct.Street, TestData);
+            Assert.AreEqual(Anproduct.Quantity, TestData);
         }
-
         [TestMethod]
-        public void Townok()
+        public void Categoryok()
         {
             //create an instance of the class we want create
             clsproduct Anproduct = new clsproduct();
             //create some test data to assign to the property
-            string TestData = "Test Town";
+            string TestData = "Electronics";
             //assign the data to the property
-            Anproduct.Town = TestData;
+            Anproduct.Category = TestData;
             //test to see that the two values are the same
-            Assert.AreEqual(Anproduct.Town, TestData);
+            Assert.AreEqual(Anproduct.Category, TestData);
+        }
+        [TestMethod]
+        public void Brandok()
+        {
+            //create an instance of the class we want create
+            clsproduct Anproduct = new clsproduct();
+            //create some test data to assign to the property
+            string TestData = "Test Brand";
+            //assign the data to the property
+            Anproduct.Brand = TestData;
+            //test to see that the two values are the same
+            Assert.AreEqual(Anproduct.Brand, TestData);
         }
     }
 }
