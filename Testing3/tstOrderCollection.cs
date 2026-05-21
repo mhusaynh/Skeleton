@@ -88,5 +88,33 @@ namespace Testing3
             //test to see that the two values are the same
             Assert.AreEqual(AllOrders.Count, TestList.Count);
         }
+
+        [TestMethod]
+        public void AddMethodOk()
+        {
+            //create an instance of the class we want to create
+            clsOrderCollection AllOrders = new clsOrderCollection();
+            //create the item of test data
+            clsOrder TestItem = new clsOrder();
+            //variable to store the primary key
+            Int32 PrimaryKey = 0;
+            //set its properties
+            TestItem.OrderId = 1;
+            TestItem.Product = "Nike Air Force";
+            TestItem.Price = 30.00m;
+            TestItem.DateAdded = DateTime.Now;
+            TestItem.Quantity = 2;
+            TestItem.Completed = true;
+            //set ThisOrders to the test data
+            AllOrders.ThisOrders = TestItem;
+            //add the record
+            PrimaryKey = AllOrders.Add();
+            //set the primary key of the test data
+            TestItem.OrderId = PrimaryKey;
+            //find the record
+            AllOrders.ThisOrders.Find(PrimaryKey);
+            //test to see that the two values are the same
+            Assert.AreEqual(AllOrders.ThisOrders, TestItem);
+        }
     }
 }
