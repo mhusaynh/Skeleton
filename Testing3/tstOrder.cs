@@ -168,7 +168,7 @@ namespace Testing3
             //invoke the method
             Found = AnOrder.Find(OrderId);
             //check the product property
-            if (AnOrder.Product != "nikeairmax")
+            if (AnOrder.Product != "Nike Air Max")
             {
                 OK = false;
             }
