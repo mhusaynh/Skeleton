@@ -32,7 +32,7 @@
         <p>
             &nbsp;</p>
         <p>
-            <asp:Button ID="btnAdd" runat="server" style="z-index: 1; left: 40px; top: 415px; position: absolute" Text="Add" />
+            <asp:Button ID="btnAdd" runat="server" style="z-index: 1; left: 40px; top: 415px; position: absolute" Text="Add" OnClick="btnAdd_Click" />
         </p>
     </form>
 </body>

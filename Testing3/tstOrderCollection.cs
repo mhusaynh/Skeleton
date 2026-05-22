@@ -99,7 +99,6 @@ namespace Testing3
             //variable to store the primary key
             Int32 PrimaryKey = 0;
             //set its properties
-            TestItem.OrderId = 1;
             TestItem.Product = "Nike Air Force";
             TestItem.Price = 30.00m;
             TestItem.DateAdded = DateTime.Now;
