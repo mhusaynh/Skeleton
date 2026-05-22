@@ -55,10 +55,16 @@ public partial class _1_DataEntry : System.Web.UI.Page
             AnOrder.DateAdded = Convert.ToDateTime(DateTime.Now);
             //capture the Quantity
             AnOrder.Quantity = Convert.ToInt32(Quantity);
-            //store the address in the session object
-            Session["AnOrder"] = AnOrder;
+            //capture the Completed
+            AnOrder.Completed = chkCompleted.Checked;
+            //create a new instance of the order collection
+            clsOrderCollection OrderList = new clsOrderCollection();
+            //set this ThisOrder property
+            OrderList.ThisOrders = AnOrder;
+            //add the new record
+            OrderList.Add();
             //navigate to the view page
-            Response.Redirect("OrderViewer.aspx");
+            Response.Redirect("OrderList.aspx");
         }
         else
         {
