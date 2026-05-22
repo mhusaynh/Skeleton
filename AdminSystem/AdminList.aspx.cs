@@ -40,4 +40,9 @@ public partial class _1_List : System.Web.UI.Page
         //redirect to the data entry page
         Response.Redirect("AdminDataEntry.aspx");
     }
+
+    protected void lstAdminList_SelectedIndexChanged(object sender, EventArgs e)
+    {
+
+    }
 }
