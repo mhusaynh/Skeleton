@@ -8,10 +8,23 @@ using ClassLibrary;
 
 public partial class _1_DataEntry : System.Web.UI.Page
 {
- 
+    //variable to store the primary key with page level scope
+    Int32 Adminid;
+
 
     protected void Page_Load(object sender, EventArgs e)
     {
+        //get the number of the admin to be processed
+        Adminid = Convert.ToInt32(Session["Adminid"]);
+        if (IsPostBack == false)
+        {
+            //if this is not a new record
+            if (Adminid != -1)
+            {
+                //display the current data for the record
+                DisplayAdmin();
+            }
+        }
 
     }
 
@@ -35,6 +48,8 @@ public partial class _1_DataEntry : System.Web.UI.Page
         Error = AnAdmin.Valid(UserName, Email, Password, Order);
         if (Error == "")
         {
+            //capture the Adminid
+            AnAdmin.Adminid = Adminid;
             //capture the Username
             AnAdmin.UserName = UserName;
             //capture the Password
@@ -47,12 +62,28 @@ public partial class _1_DataEntry : System.Web.UI.Page
             AnAdmin.Stock = chkStock.Checked;
             //Create a new instance of the Admin collection
             clsAdminCollection AdminList = new clsAdminCollection();
-            //set the ThisAdmin property
-            AdminList.ThisAdmin = AnAdmin;
-            //add the new record
-            AdminList.Add();
-            //redirect back to the list page
-            Response.Redirect("AdminList.aspx");
+
+            //if this is a new record i.e. Adminid = -1 then add the data
+            if (Adminid == -1)
+            {
+                //set the ThisAdmin property
+                AdminList.ThisAdmin = AnAdmin;
+                //add the new record
+                AdminList.Add();
+            }
+            //otherwise it must be an update
+            else
+            {
+                //find the record to update
+                AdminList.ThisAdmin.Find(Adminid);
+                //set the ThisAdmin property
+                AdminList.ThisAdmin = AnAdmin;
+                //update the record
+                AdminList.Update();
+            }
+
+                //redirect back to the list page
+                Response.Redirect("AdminList.aspx");
         }
         else
         {
@@ -83,6 +114,21 @@ public partial class _1_DataEntry : System.Web.UI.Page
             txtEmail.Text = AnAdmin.Email;
             txtOrder.Text = AnAdmin.Order;
             chkStock.Checked = AnAdmin.Stock;
+
         }
+    }
+    void DisplayAdmin()
+    {
+        //create an instance of the admin book
+        clsAdminCollection AdminBook = new clsAdminCollection();
+        //find the record to update
+        AdminBook.ThisAdmin.Find(Adminid);
+        //display the data for this record
+        txtAdminid.Text = AdminBook.ThisAdmin.Adminid.ToString();
+        txtUserName.Text = AdminBook.ThisAdmin.UserName.ToString();
+        txtEmail.Text = AdminBook.ThisAdmin.Email.ToString();
+        txtPassword.Text = AdminBook.ThisAdmin.Password.ToString();
+        txtOrder.Text = AdminBook.ThisAdmin.Order.ToString();
+        chkStock.Checked = AdminBook.ThisAdmin.Stock;
     }
 }

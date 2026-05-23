@@ -1,6 +1,7 @@
 ﻿using ClassLibrary;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 
 namespace Testing2
@@ -9,7 +10,7 @@ namespace Testing2
     public class tstAdminCollection
     {
         [TestMethod]
-        public void InstanceOk()
+        public void InstanceOK()
         {
             //create an instance of the class we want to create
             clsAdminCollection AllAdmins = new clsAdminCollection();
@@ -29,11 +30,11 @@ namespace Testing2
             clsAdmin TestItem = new clsAdmin();
             //Set its properties
             TestItem.Stock = true;
-            TestItem.Adminid = 1;
-            TestItem.UserName = "John";
-            TestItem.Email = "john12@gmail.com";
-            TestItem.Password = "john123";
-            TestItem.Order = "22";
+            TestItem.Adminid = 6;
+            TestItem.UserName = "Sam";
+            TestItem.Email = "sam44@gmail.com";
+            TestItem.Password = "sam888";
+            TestItem.Order = "42";
             //Add the item to the test list
             TestList.Add(TestItem);
             //Assign the data to the property
@@ -47,7 +48,7 @@ namespace Testing2
             //Create an instance of the class we want to create
             clsAdminCollection AllAdmins = new clsAdminCollection();
             //Create some test data to assign to the property
-            Int32 SomeCount = 2;
+            Int32 SomeCount = 7;
             //Assign the data to the property
             AllAdmins.Count = SomeCount;
             //Test to see that the two values are the same
@@ -62,11 +63,11 @@ namespace Testing2
             clsAdmin TestAdmin = new clsAdmin();
             //Set the properties of the test object
             TestAdmin.Stock = true;
-            TestAdmin.Adminid = 1;
-            TestAdmin.UserName = "John";
-            TestAdmin.Email = "john12@gmail.com";
-            TestAdmin.Password = "john123";
-            TestAdmin.Order = "22";
+            TestAdmin.Adminid = 6;
+            TestAdmin.UserName = "Sam";
+            TestAdmin.Email = "sam44@gmail.com";
+            TestAdmin.Password = "sam888";
+            TestAdmin.Order = "42";
             //Assign the data to the property
             AllAdmins.ThisAdmin = TestAdmin;
             //Test to see that the two values are the same
@@ -85,11 +86,11 @@ namespace Testing2
             clsAdmin TestItem = new clsAdmin();
             //Set its properties
             TestItem.Stock = true;
-            TestItem.Adminid = 1;
-            TestItem.UserName = "John";
-            TestItem.Email = "john12@gmail.com";
-            TestItem.Password = "john123";
-            TestItem.Order = "22";
+            TestItem.Adminid = 6;
+            TestItem.UserName = "Sam";
+            TestItem.Email = "sam44@gmail.com";
+            TestItem.Password = "sam888";
+            TestItem.Order = "42";
             //Add the item to the test list
             TestList.Add(TestItem);
             //Assign the data to the property
@@ -103,7 +104,7 @@ namespace Testing2
             //Create an instance of the class we want to create
             clsAdminCollection AllAdmins = new clsAdminCollection();
             //test to see that the two values are the same
-            Assert.AreEqual(AllAdmins.Count, 2);
+            Assert.AreEqual(AllAdmins.Count, 7);
         }
 
         [TestMethod]
@@ -116,17 +117,54 @@ namespace Testing2
             //variable to store the primary key
             Int32 PrimaryKey = 0;
             //Set the properties of the test object
-            TestItem.UserName = "John";
-            TestItem.Email = "john12@gmail.com";
-            TestItem.Password = "john123";
-            TestItem.Order = "22";
             TestItem.Stock = true;
+            TestItem.Adminid = 6;
+            TestItem.UserName = "Sam";
+            TestItem.Email = "sam44@gmail.com";
+            TestItem.Password = "sam888";
+            TestItem.Order = "42";
             //Set ThisAdmin to the test data
             AllAdmins.ThisAdmin = TestItem;
             //Add the record
             PrimaryKey = AllAdmins.Add();
             //Set the primary key of the test data
             TestItem.Adminid = PrimaryKey;
+            //Find the record
+            AllAdmins.ThisAdmin.Find(PrimaryKey);
+            //Test to see that the two values are the same
+            Assert.AreEqual(AllAdmins.ThisAdmin, TestItem);
+        }
+        [TestMethod]
+        public void UpdateMethodOK()
+        {
+            //Create an instance of the class we want to create
+            clsAdminCollection AllAdmins = new clsAdminCollection();
+            //Create some test data to assign to the property
+            clsAdmin TestItem = new clsAdmin();
+            //variable to store the primary key
+            Int32 PrimaryKey = 0;
+            //Set its properties
+            TestItem.Stock = true;
+            TestItem.UserName = "Sam";
+            TestItem.Email = "sam44@gmail.com";
+            TestItem.Password = "sam888";
+            TestItem.Order = "42";
+            //Set ThisAdmin to the test data
+            AllAdmins.ThisAdmin = TestItem;
+            //Add the record
+            PrimaryKey = AllAdmins.Add();
+            //Set the primary key of the test data
+            TestItem.Adminid = PrimaryKey;
+            //Modify the test data
+            TestItem.Stock = false;
+            TestItem.UserName = "Sonal";
+            TestItem.Email = "sonal23@gmail.com";
+            TestItem.Password = "sonal777";
+            TestItem.Order = "98";
+            //Set the record based on the new test data
+            AllAdmins.ThisAdmin = TestItem;
+            //Update the record
+            AllAdmins.Update();
             //Find the record
             AllAdmins.ThisAdmin.Find(PrimaryKey);
             //Test to see that the two values are the same

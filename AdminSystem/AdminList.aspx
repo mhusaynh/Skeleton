@@ -8,12 +8,14 @@
 </head>
 <body>
     <form id="form1" runat="server">
-        <asp:ListBox ID="lstAdminList" runat="server" Height="304px" Width="302px" OnSelectedIndexChanged="lstAdminList_SelectedIndexChanged"></asp:ListBox>
         <p>
-            <asp:Button ID="btnAdd" runat="server" OnClick="btnAdd_Click" Text="Add" />
+            <asp:ListBox ID="IstAdminList" runat="server" Height="273px" OnSelectedIndexChanged="IstAdminList_SelectedIndexChanged" Width="298px"></asp:ListBox>
         </p>
         <p>
-            &nbsp;</p>
+            <asp:Button ID="btnAdd" runat="server" OnClick="btnAdd_Click" Text="Add" />
+            <asp:Button ID="btnEdit" runat="server" OnClick="btnEdit_Click" style="margin-left: 49px" Text="Edit" />
+        </p>
+        <asp:Label ID="lblError" runat="server"></asp:Label>
     </form>
 </body>
 </html>
