@@ -38,7 +38,7 @@ namespace ClassLibrary
             }
         }
         public clsAdmin ThisAdmin
-            {
+        {
             get
             {
                 //return the private data
@@ -70,12 +70,12 @@ namespace ClassLibrary
                 //create a blank admin
                 clsAdmin AnAdmin = new clsAdmin();
                 //read in the fields from the current record
+                AnAdmin.Stock = Convert.ToBoolean(DB.DataTable.Rows[Index]["Stock"]);
                 AnAdmin.Adminid = Convert.ToInt32(DB.DataTable.Rows[Index]["Adminid"]);
                 AnAdmin.UserName = Convert.ToString(DB.DataTable.Rows[Index]["UserName"]);
                 AnAdmin.Email = Convert.ToString(DB.DataTable.Rows[Index]["Email"]);
                 AnAdmin.Password = Convert.ToString(DB.DataTable.Rows[Index]["Password"]);
                 AnAdmin.Order = Convert.ToString(DB.DataTable.Rows[Index]["Order"]);
-                AnAdmin.Stock = Convert.ToBoolean(DB.DataTable.Rows[Index]["Stock"]);
                 //add the admin to the list
                 mAdminList.Add(AnAdmin);
                 //point at the next record
@@ -94,11 +94,25 @@ namespace ClassLibrary
             DB.AddParameter("@Password", mThisAdmin.Password);
             DB.AddParameter("@Order", mThisAdmin.Order);
             DB.AddParameter("@Stock", mThisAdmin.Stock);
-
             //execute the query returning the primary key value
             return DB.Execute("sproc_tblAdmin_Insert");
         }
-    }
 
+        public void Update()
+        {
+            //update an existing record based on the values of mThisAdmin
+            //connect to the database
+            clsDataConnection DB = new clsDataConnection();
+            //set the parameters for the stored procedure
+            DB.AddParameter("@Adminid", mThisAdmin.Adminid);
+            DB.AddParameter("@UserName", mThisAdmin.UserName);
+            DB.AddParameter("@Email", mThisAdmin.Email);
+            DB.AddParameter("@Password", mThisAdmin.Password);
+            DB.AddParameter("@Order", mThisAdmin.Order);
+            DB.AddParameter("@Stock", mThisAdmin.Stock);
+            //execute the stored procedure
+            DB.Execute("sproc_tblAdmin_Update");
+        }
+    }
 
 }
