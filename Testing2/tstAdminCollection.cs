@@ -48,7 +48,7 @@ namespace Testing2
             //Create an instance of the class we want to create
             clsAdminCollection AllAdmins = new clsAdminCollection();
             //Create some test data to assign to the property
-            Int32 SomeCount = 7;
+            Int32 SomeCount = 8;
             //Assign the data to the property
             AllAdmins.Count = SomeCount;
             //Test to see that the two values are the same
@@ -104,7 +104,7 @@ namespace Testing2
             //Create an instance of the class we want to create
             clsAdminCollection AllAdmins = new clsAdminCollection();
             //test to see that the two values are the same
-            Assert.AreEqual(AllAdmins.Count, 7);
+            Assert.AreEqual(AllAdmins.Count, 8);
         }
 
         [TestMethod]
@@ -170,5 +170,87 @@ namespace Testing2
             //Test to see that the two values are the same
             Assert.AreEqual(AllAdmins.ThisAdmin, TestItem);
         }
+        [TestMethod]
+        public void DeleteMethodOK()
+        {
+            //Create an instance of the class we want to create
+            clsAdminCollection AllAdmins = new clsAdminCollection();
+            //Create some test data to assign to the property
+            clsAdmin TestItem = new clsAdmin();
+            //variable to store the primary key
+            Int32 PrimaryKey = 0;
+            //Set its properties
+            TestItem.Stock = true;
+            TestItem.Adminid = 6;
+            TestItem.UserName = "Sam";
+            TestItem.Email = "sam44@gmail.com";
+            TestItem.Password = "sam888";
+            TestItem.Order = "42";
+            //Set ThisAdmin to the test data
+            AllAdmins.ThisAdmin = TestItem;
+            //Add the record
+            PrimaryKey = AllAdmins.Add();
+            //Set the primary key of the test data
+            TestItem.Adminid = PrimaryKey;
+            //find the record
+            AllAdmins.ThisAdmin.Find(PrimaryKey);
+            //Delete the record
+            AllAdmins.Delete();
+            //now find the record
+            Boolean Found = AllAdmins.ThisAdmin.Find(PrimaryKey);
+            //Test to see that the record was not found
+            Assert.IsFalse(Found);
+        }
+        [TestMethod]
+        public void ReportByUserNameMethodOK()
+        {
+            //Create an instance of the class we want to create
+            clsAdminCollection AllAdmins = new clsAdminCollection();
+            //Create an instance of the filtered data
+            clsAdminCollection FilteredAdmins = new clsAdminCollection();
+            //Apply a blank string (should return all records)
+            FilteredAdmins.ReportByUserName("");
+            //Test to see that the two values are the same
+            Assert.AreEqual(AllAdmins.Count, FilteredAdmins.Count);
+        }
+        [TestMethod]
+        public void ReportByUserNameNoneFound()
+        {
+            //Create an instance of the class we want to create
+            clsAdminCollection FilteredAdmins = new clsAdminCollection();
+            //Apply a UserName that doesn't exist
+            FilteredAdmins.ReportByUserName("xxxxxx");
+            //Test to see that there are no records
+            Assert.AreEqual(0, FilteredAdmins.Count);
+        }
+        [TestMethod]
+        public void ReportByUserNameTestDataFound()
+        {
+            //Create an instance of the class we want to create
+            clsAdminCollection FilteredAdmins = new clsAdminCollection();
+            //variable to store the outcome
+            Boolean OK = true;
+            //Apply a UserName that doesn't exist
+            FilteredAdmins.ReportByUserName("yyyyyy");
+            //check that the correct number of records are found
+            if (FilteredAdmins.Count == 2)
+            {
+                //check that the first record is ID 6
+                if (FilteredAdmins.AdminList[0].Adminid != 6)
+                {
+                    OK = false;
+                }
+                //check that the second record is ID 7
+                if (FilteredAdmins.AdminList[1].Adminid != 7)
+                {
+                    OK = false;
+                }
+            }
+            else
+            {
+                OK = false;
+            }
+        }
+
     }
 }
