@@ -54,33 +54,13 @@ namespace ClassLibrary
         //constructor for the class
         public clsAdminCollection()
         {
-            //variable for the index
-            Int32 Index = 0;
-            //variable to store the record count
-            Int32 RecordCount = 0;
             //object for data connection
             clsDataConnection DB = new clsDataConnection();
-            //execute the stored procedure to get all the data
+            //execute the stored procedure
             DB.Execute("sproc_tblAdmin_SelectAll");
-            //get the count of records returned
-            RecordCount = DB.Count;
-            //while there are records to process
-            while (Index < RecordCount)
-            {
-                //create a blank admin
-                clsAdmin AnAdmin = new clsAdmin();
-                //read in the fields from the current record
-                AnAdmin.Stock = Convert.ToBoolean(DB.DataTable.Rows[Index]["Stock"]);
-                AnAdmin.Adminid = Convert.ToInt32(DB.DataTable.Rows[Index]["Adminid"]);
-                AnAdmin.UserName = Convert.ToString(DB.DataTable.Rows[Index]["UserName"]);
-                AnAdmin.Email = Convert.ToString(DB.DataTable.Rows[Index]["Email"]);
-                AnAdmin.Password = Convert.ToString(DB.DataTable.Rows[Index]["Password"]);
-                AnAdmin.Order = Convert.ToString(DB.DataTable.Rows[Index]["Order"]);
-                //add the admin to the list
-                mAdminList.Add(AnAdmin);
-                //point at the next record
-                Index++;
-            }
+            //populate the array list with the data table
+            PopulateArray(DB);
+        
         }
 
         public int Add()
@@ -113,6 +93,58 @@ namespace ClassLibrary
             //execute the stored procedure
             DB.Execute("sproc_tblAdmin_Update");
         }
-    }
 
+        public void Delete()
+        {
+            //delete the record pointed to by ThisAdmin
+            //connect to the database
+            clsDataConnection DB = new clsDataConnection();
+            //set the parameters for the stored procedure
+            DB.AddParameter("@Adminid", mThisAdmin.Adminid);
+            //execute the stored procedure
+            DB.Execute("sproc_tblAdmin_Delete");
+        }
+
+        public void ReportByUserName(string UserName)
+        {
+            //filters the records based on a full or partial user name
+            //connect to the database
+            clsDataConnection DB = new clsDataConnection();
+            //set the UserName parameter for the stored procedure
+            DB.AddParameter("@UserName", UserName);
+            //execute the stored procedure
+            DB.Execute("sproc_tblAdmin_FilterByUserName");
+            //populate the array list with the data table
+            PopulateArray(DB);
+        }
+        void PopulateArray(clsDataConnection DB)
+        {
+            //populates the array list based on the data table in the parameter DB
+            //var for the index
+            Int32 Index = 0;
+            //var to store the record count
+            Int32 RecordCount = 0;
+            //get the count of records
+            RecordCount = DB.Count;
+            //clear the private array list
+            mAdminList = new List<clsAdmin>();
+            //while there are records to process
+            while (Index < RecordCount)
+            {
+                //create a blank admin
+                clsAdmin AnAdmin = new clsAdmin();
+                //read in the fields from the current record
+                AnAdmin.Stock = Convert.ToBoolean(DB.DataTable.Rows[Index]["Stock"]);
+                AnAdmin.Adminid = Convert.ToInt32(DB.DataTable.Rows[Index]["Adminid"]);
+                AnAdmin.UserName = Convert.ToString(DB.DataTable.Rows[Index]["UserName"]);
+                AnAdmin.Email = Convert.ToString(DB.DataTable.Rows[Index]["Email"]);
+                AnAdmin.Password = Convert.ToString(DB.DataTable.Rows[Index]["Password"]);
+                AnAdmin.Order = Convert.ToString(DB.DataTable.Rows[Index]["Order"]);
+                //add the record to the private data member
+                mAdminList.Add(AnAdmin);
+                //point at the next record
+                Index++;
+            }
+        }
+    }
 }

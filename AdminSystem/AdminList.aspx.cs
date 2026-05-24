@@ -71,4 +71,59 @@ public partial class _1_List : System.Web.UI.Page
             lblError.Text = "Please select a record from the list to edit";
         }
     }
+
+    protected void btnDelete_Click(object sender, EventArgs e)
+    {
+        //variable to store the primary key value of the record to be edited
+        Int32 Adminid;
+        //if a record has been selected from the list
+        if (IstAdminList.SelectedIndex != -1)
+        {
+            //get the primary key value of the record to edit
+            Adminid = Convert.ToInt32(IstAdminList.SelectedValue);
+            //store the data in the session object
+            Session["Adminid"] = Adminid;
+            //redirect to the delete page
+            Response.Redirect("AdminConfirmDelete.aspx");
+        }
+        else //if no record has been selected
+        {
+            lblError.Text = "Please select a record from the list to delete";
+        }
+
+    }
+
+    protected void btnApplyFilter_Click(object sender, EventArgs e)
+    {
+        //create an instance of the admin collection
+        clsAdminCollection AnAdmin = new clsAdminCollection();
+        //retrieve the value of the user name from the presentation layer
+        AnAdmin.ReportByUserName(txtFilter.Text);
+        //set the data source to the list of admins in the collection
+        IstAdminList.DataSource = AnAdmin.AdminList;
+        //set the name of the primary key
+        IstAdminList.DataValueField = "Adminid";
+        //set the data field to display
+        IstAdminList.DataTextField = "UserName";
+        //bind the data to the list
+        IstAdminList.DataBind();
+    }
+
+    protected void btnClearFilter_Click(object sender, EventArgs e)
+    {
+        //create an instance of the admin object
+        clsAdminCollection AnAdmin = new clsAdminCollection();
+        //set an empty string
+        AnAdmin.ReportByUserName("");
+        //clear any existing filter to tidy up the interface
+        txtFilter.Text = "";
+        //set the data source to the list of admins in the collection
+        IstAdminList.DataSource = AnAdmin.AdminList;
+        //set the name of the primary key
+        IstAdminList.DataValueField = "Adminid";
+        //set the data field to display
+        IstAdminList.DataTextField = "UserName";
+        //bind the data to the list
+        IstAdminList.DataBind();
+    }
 }
