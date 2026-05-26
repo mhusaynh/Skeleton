@@ -18,7 +18,8 @@
         <p>
             &nbsp;</p>
         <p>
-            &nbsp;</p>
+            <asp:Button ID="btnDelete" runat="server" style="z-index: 1; left: 180px; top: 415px; position: absolute" Text="Delete" OnClick="btnDelete_Click" />
+        </p>
         <p>
             &nbsp;</p>
         <p>
