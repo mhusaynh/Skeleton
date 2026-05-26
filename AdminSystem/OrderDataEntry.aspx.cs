@@ -9,9 +9,20 @@ using ClassLibrary;
 
 public partial class _1_DataEntry : System.Web.UI.Page
 {
+    Int32 OrderId;
     protected void Page_Load(object sender, EventArgs e)
     {
-
+        //get the number of the address to be processed
+        OrderId = Convert.ToInt32(Session["OrderId"]);
+        if (IsPostBack == false)
+        {
+            //if this is not a new record
+            if (OrderId != -1)
+            {
+                //display the current data for the record
+                DisplayOrders();
+            }
+        }
     }
 
     protected void TextBox1_TextChanged(object sender, EventArgs e)
@@ -47,6 +58,8 @@ public partial class _1_DataEntry : System.Web.UI.Page
         Error = AnOrder.Valid(Product, Price, DateAdded, Quantity);
         if (Error == "")
         {
+            //capture the Order id
+            AnOrder.OrderId = OrderId;
             //capture the Product
             AnOrder.Product = Product;
             //capture the Price
@@ -59,11 +72,26 @@ public partial class _1_DataEntry : System.Web.UI.Page
             AnOrder.Completed = chkCompleted.Checked;
             //create a new instance of the order collection
             clsOrderCollection OrderList = new clsOrderCollection();
-            //set this ThisOrder property
-            OrderList.ThisOrders = AnOrder;
-            //add the new record
-            OrderList.Add();
-            //navigate to the view page
+
+            //if this is a new record i.e. OrderId = -1 then add the data
+            if (OrderId == -1)
+            {
+                //set the ThisOrders property
+                OrderList.ThisOrders = AnOrder;
+                //add the new record
+                OrderList.Add();
+            }
+            //otherwise it must be an update
+            else
+            {
+                //find the record to update
+                OrderList.ThisOrders.Find(OrderId);
+                //set the ThisOrders property
+                OrderList.ThisOrders = AnOrder;
+                //update the record
+                OrderList.Update();
+            }
+            //redirect back to the list page
             Response.Redirect("OrderList.aspx");
         }
         else
@@ -97,5 +125,20 @@ public partial class _1_DataEntry : System.Web.UI.Page
             txtQuantity.Text = AnOrder.Quantity.ToString();
             chkCompleted.Checked = AnOrder.Completed;
         }
+    }
+
+    void DisplayOrders()
+    {
+        //create an instance of the order book
+        clsOrderCollection OrderBook = new clsOrderCollection();
+        //find the record to update
+        OrderBook.ThisOrders.Find(OrderId);
+        //display the data for the record
+        txtOrderId.Text = OrderBook.ThisOrders.OrderId.ToString();
+        txtProduct.Text = OrderBook.ThisOrders.Product.ToString();
+        txtPrice.Text = OrderBook.ThisOrders.Price.ToString();
+        txtDateAdded.Text = OrderBook.ThisOrders.DateAdded.ToString();
+        txtQuantity.Text = OrderBook.ThisOrders.Quantity.ToString();
+        chkCompleted.Text = OrderBook.ThisOrders.Completed.ToString();
     }
 }
