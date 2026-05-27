@@ -96,24 +96,36 @@ namespace ClassLibrary
             DB.Execute("sproc_tblOrder_Delete");
         }
 
-        public clsOrderCollection()
+        public void ReportByProduct(string Product)
         {
+            //filter the records based on a full or partial product
+            //connect to the database
+            clsDataConnection DB = new clsDataConnection();
+            //send the Product parameter to the database
+            DB.AddParameter("@Product", Product);
+            //execute the stored procedure
+            DB.Execute("sproc_tblOrder_FilterByProduct");
+            //populate the array list with the data table
+            PopulateArray(DB);
+        }
+
+        void PopulateArray(clsDataConnection DB)
+        {
+            //populates the array list based on the data table in the parameter DB
             //variable for the index
             Int32 Index = 0;
             //variable to store the record count
-            Int32 RecordCount = 0;
-            //onject for the data connect
-            clsDataConnection DB = new clsDataConnection();
-            //execute the stored procedure
-            DB.Execute("sproc_tblOrder_SelectAll");
+            Int32 RecordCount;
             //get the count of records
             RecordCount = DB.Count;
+            //clear the private array list
+            mOrderList = new List<clsOrder>();
             //while there are records to process
             while (Index < RecordCount)
             {
-                //create a blank order
+                //create a blank address object
                 clsOrder AnOrder = new clsOrder();
-                //read in the fields for the current record
+                //read in the fields from the current record
                 AnOrder.OrderId = Convert.ToInt32(DB.DataTable.Rows[Index]["OrderId"]);
                 AnOrder.Product = Convert.ToString(DB.DataTable.Rows[Index]["Product"]);
                 AnOrder.Price = Convert.ToDecimal(DB.DataTable.Rows[Index]["Price"]);
@@ -126,5 +138,16 @@ namespace ClassLibrary
                 Index++;
             }
         }
+
+        public clsOrderCollection()
+        {
+            //object for data connection
+            clsDataConnection DB = new clsDataConnection();
+            //execute the stored procedure
+            DB.Execute("sproc_tblOrder_SelectAll");
+            //populate the array list with the data table
+            PopulateArray(DB);
+        }
+            
     }
 }

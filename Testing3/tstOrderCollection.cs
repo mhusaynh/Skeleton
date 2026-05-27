@@ -116,6 +116,7 @@ namespace Testing3
             Assert.AreEqual(AllOrders.ThisOrders, TestItem);
         }
 
+        [TestMethod]
         public void UpdateMethodOk()
         {
             //create an instance of the class we want to create
@@ -152,6 +153,7 @@ namespace Testing3
             Assert.AreEqual(AllOrders.ThisOrders, TestItem);
         }
 
+        [TestMethod]
         public void DeleteMethodOk()
         {
             //create an instance of the class we want to create
@@ -180,6 +182,61 @@ namespace Testing3
             Boolean Found = AllOrders.ThisOrders.Find(PrimaryKey);
             //test to see that the record was not found
             Assert.IsFalse(Found);
+        }
+
+        [TestMethod]
+        public void ReportByProductOk()
+        {
+            //create an instance of the class containing unfiltered results
+            clsOrderCollection AllOrders = new clsOrderCollection();
+            //create an instance of the filtered data
+            clsOrderCollection FilteredOrders = new clsOrderCollection();
+            //apply a blank string (should return all orders)
+            FilteredOrders.ReportByProduct("");
+            //test to see that the two values are the same
+            Assert.AreEqual(AllOrders.Count, FilteredOrders.Count);
+        }
+
+        [TestMethod]
+        public void ReportByProductNoneFound()
+        {
+            //create an instance of the class we want to create
+            clsOrderCollection FilteredOrders = new clsOrderCollection();
+            //apply a product that doesn't exist
+            FilteredOrders.ReportByProduct("............");
+            //test to see that there are no records
+            Assert.AreEqual(0, FilteredOrders.Count);
+        }
+
+        [TestMethod]
+        public void ReportByProductTestDataFound()
+        {
+            //create an instance of the filtered data
+            clsOrderCollection FilteredOrders = new clsOrderCollection();
+            //variable to store the outcome
+            Boolean OK = true;
+            //apply a product that doesn't exist
+            FilteredOrders.ReportByProduct("Nike Air Force");
+            //check that the correct number of records are found
+            if (FilteredOrders.Count == 2)
+            {
+                //check to see that the first record is 28
+                if (FilteredOrders.OrderList[0].OrderId != 28)
+                {
+                    OK = false;
+                }
+                //check to see that the first record is 29
+                if (FilteredOrders.OrderList[1].OrderId != 29)
+                {
+                    OK = false;
+                }
+            }
+            else
+            {
+                OK = false;
+            }
+            //test to see that there are no records
+            Assert.IsTrue(OK);
         }
     }
 }
