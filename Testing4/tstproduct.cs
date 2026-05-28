@@ -109,7 +109,7 @@ namespace Testing4
             //create an instance of the class we want create
             clsproduct Anproduct = new clsproduct();
             //create some test data to assign to the property
-            string TestData = "Electronics";
+            string TestData = "Test Category";
             //assign the data to the property
             Anproduct.Category = TestData;
             //test to see that the two values are the same
@@ -259,7 +259,7 @@ namespace Testing4
             Int32 ProductID = 1;
             //invoke the method
             Found = Anproduct.Find(ProductID);
-            if (Anproduct.Category != "Electronics")
+            if (Anproduct.Category != "Test Category")
             {
                 OK = false;
             }
