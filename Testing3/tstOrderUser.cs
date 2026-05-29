@@ -71,7 +71,40 @@ namespace Testing3
         [TestMethod]
         public void FindUserMethodOk()
         {
-            //creaet 
+            //create an instance of the class we want to create
+            clsOrderUser AnUser = new clsOrderUser();
+            //create a Boolean variable to store the results of the validation
+            Boolean Found = false;
+            //create some test data to use with the method
+            string UserName = "Ashik";
+            string Password = "ashik100";
+            //invoke the method
+            Found = AnUser.FindUser(UserName, Password);
+            //test to see if the result is true
+            Assert.IsTrue(Found);
+        }
+
+        [TestMethod]
+        public void TestUsernamePWFound()
+        {
+            //create an instance of the class we want to create
+            clsOrderUser AnUser = new clsOrderUser();
+            //create a Boolean variable to store the results of the validation
+            Boolean Found = false;
+            //create a Boolean variable to record if the data is OK (assume it is)
+            Boolean OK = true;
+            //create some test data to use with the method
+            string Username = "Ashik";
+            string Password = "ashik100";
+            //invoke the method
+            Found = AnUser.FindUser(Username, Password);
+            //check the user id property
+            if (AnUser.UserName != Username && AnUser.Password != Password)
+            {
+                OK = false;
+            }
+            //test to see that the result is correct
+            Assert.IsTrue(OK);
         }
     }
 }
