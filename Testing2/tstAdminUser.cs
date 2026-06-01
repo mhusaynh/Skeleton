@@ -78,5 +78,27 @@ namespace Testing2
             //test to see that the result is true
             Assert.IsTrue(Found);
         }
+        [TestMethod]
+        public void TestUsernamePWFound()
+        {
+            //create an instance of the class we want to create
+            clsAdminUser AnUser = new clsAdminUser();
+            //Boolean variable to store the results of the validation
+            Boolean Found = false;
+            //create a Boolean variable to record if data is OK (assume it is)
+            Boolean OK = true;
+            //create some test data to use with the method
+            string Username = "Allenso";
+            string Password = "allenso123";
+            //invoke the method
+            Found = AnUser.FindUser(Username, Password);
+            //check the user id property
+            if (AnUser.Username != Username && AnUser.Password != Password)
+            {
+                OK = false;
+            }
+            //test to see that the result is true
+            Assert.IsTrue(Found);
+        }
     }
 }
