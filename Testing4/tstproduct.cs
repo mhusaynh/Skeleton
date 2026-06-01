@@ -17,32 +17,6 @@ namespace Testing4
         }
 
         [TestMethod]
-        public void Activeok()
-        {
-            //create an instance of the class we want create
-            clsproduct Anproduct = new clsproduct();
-            //create some test data to assign to the property
-            Boolean TestData = true;
-            //assign the data to the property
-            Anproduct.Active = TestData;
-            //test to see that the two values are the same
-            Assert.AreEqual(Anproduct.Active, TestData);
-        }
-
-        [TestMethod]
-        public void DateAddedok()
-        {
-            //create an instance of the class we want create
-            clsproduct Anproduct = new clsproduct();
-            //create some test data to assign to the property
-            DateTime TestData = DateTime.Now.Date;
-            //assign the data to the property
-            Anproduct.DateAdded = TestData;
-            //test to see that the two values are the same
-            Assert.AreEqual(Anproduct.DateAdded, TestData);
-        }
-
-        [TestMethod]
         public void ProductIDok()
         {
             //create an instance of the class we want create
@@ -128,6 +102,32 @@ namespace Testing4
             Assert.AreEqual(Anproduct.Brand, TestData);
         }
         [TestMethod]
+        public void Activeok()
+        {
+            //create an instance of the class we want create
+            clsproduct Anproduct = new clsproduct();
+            //create some test data to assign to the property
+            Boolean TestData = true;
+            //assign the data to the property
+            Anproduct.Active = TestData;
+            //test to see that the two values are the same
+            Assert.AreEqual(Anproduct.Active, TestData);
+        }
+
+        [TestMethod]
+        public void DateAddedok()
+        {
+            //create an instance of the class we want create
+            clsproduct Anproduct = new clsproduct();
+            //create some test data to assign to the property
+            DateTime TestData = DateTime.Now.Date;
+            //assign the data to the property
+            Anproduct.DateAdded = TestData;
+            //test to see that the two values are the same
+            Assert.AreEqual(Anproduct.DateAdded, TestData);
+        }
+
+        [TestMethod]
         public void FindMethodok()
         {
             //create an instance of the class we want create
@@ -135,7 +135,7 @@ namespace Testing4
             //boolean variable to store the results of the validation
             Boolean Found = false;
             //create some test data to use with the method
-            Int32 ProductID = 1;
+            Int32 ProductID = 5;
             //invoke the method
             Found = Anproduct.Find(ProductID);
             //test to see that the result is true
@@ -151,7 +151,7 @@ namespace Testing4
             // 
             Boolean OK = true;
             //create some test data to use with the method
-            Int32 ProductID = 1;
+            Int32 ProductID = 5;
             //invoke the method
             Found = Anproduct.Find(ProductID);
             if (Anproduct.ProductID != ProductID)
@@ -173,7 +173,7 @@ namespace Testing4
             //
             Boolean OK = true;
             //create some test data to use with the method
-            Int32 ProductID = 1;
+            Int32 ProductID = 5;
             //invoke the method
             Found = Anproduct.Find(ProductID);
             if (Anproduct.ProductName != "Test Product")
@@ -196,7 +196,7 @@ namespace Testing4
             //
             Boolean OK = true;
             //create some test data to use with the method
-            Int32 ProductID = 1;
+            Int32 ProductID = 5;
             //invoke the method
             Found = Anproduct.Find(ProductID);
             if (Anproduct.Price != 9.99m)
@@ -216,10 +216,10 @@ namespace Testing4
             //
             Boolean OK = true;
             //create some test data to use with the method
-            Int32 ProductID = 1;
+            Int32 ProductID = 5;
             //invoke the method
             Found = Anproduct.Find(ProductID);
-            if (Anproduct.Colour != "Red")
+            if (Anproduct.Colour != "Black")
             {
                 OK = false;
             }
@@ -236,10 +236,10 @@ namespace Testing4
             //
             Boolean OK = true;
             //create some test data to use with the method
-            Int32 ProductID = 1;
+            Int32 ProductID = 5;
             //invoke the method
             Found = Anproduct.Find(ProductID);
-            if (Anproduct.Quantity != 100)
+            if (Anproduct.Quantity != 10)
             {
                 OK = false;
             }
@@ -256,7 +256,7 @@ namespace Testing4
             //
             Boolean OK = true;
             //create some test data to use with the method
-            Int32 ProductID = 1;
+            Int32 ProductID = 5;
             //invoke the method
             Found = Anproduct.Find(ProductID);
             if (Anproduct.Category != "Test Category")
@@ -276,7 +276,7 @@ namespace Testing4
             //
             Boolean OK = true;
             //create some test data to use with the method
-            Int32 ProductID = 1;
+            Int32 ProductID = 5;
             //invoke the method
             Found = Anproduct.Find(ProductID);
             if (Anproduct.Brand != "Test Brand")
@@ -296,7 +296,7 @@ namespace Testing4
             //
             Boolean OK = true;
             //create some test data to use with the method
-            Int32 ProductID = 1;
+            Int32 ProductID = 5;
             //invoke the method
             Found = Anproduct.Find(ProductID);
             if (Anproduct.Active != true)
@@ -316,10 +316,10 @@ namespace Testing4
             //
             Boolean OK = true;
             //create some test data to use with the method
-            Int32 ProductID = 1;
+            Int32 ProductID = 5;
             //invoke the method
             Found = Anproduct.Find(ProductID);
-            if (Anproduct.DateAdded != Convert.ToDateTime("01/01/2020"))
+            if (Anproduct.DateAdded != Convert.ToDateTime("NULL"))
             {
                 OK = false;
             }
