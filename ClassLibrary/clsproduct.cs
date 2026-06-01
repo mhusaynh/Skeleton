@@ -4,36 +4,7 @@ namespace ClassLibrary
 {
     public class clsproduct
     {
-        private bool mActive;
-        public bool Active
-            {
-            get
-            {
-                // this line of code sends data from the private data member to the public property
-                return mActive;
-            }
-            set
-            {
-                // this line of code sends data from the public property to the private data member
-                mActive = value;
-            }
-        }
-
-
-        private DateTime mDateAdded;
-        public DateTime DateAdded 
-            {
-            get
-            {
-                // this line of code sends data from the private data member to the public property
-                return mDateAdded;
-            }
-            set
-            {
-                // this line of code sends data from the public property to the private data member
-                mDateAdded = value;
-            }
-        }
+        
 
         private Int32 mProductID;
         public int ProductID 
@@ -141,19 +112,59 @@ namespace ClassLibrary
                 mBrand = value;
             }
         }
+            private bool mActive;
+            public bool Active
+            {
+                get
+                {
+                    // this line of code sends data from the private data member to the public property
+                    return mActive;
+                }
+                set
+                {
+                    // this line of code sends data from the public property to the private data member
+                    mActive = value;
+                }
+            }
+        private DateTime mDateAdded;
+        public DateTime DateAdded
+        {
+            get
+            {
+                // this line of code sends data from the private data member to the public property
+                return mDateAdded;
+            }
+            set
+            {
+                // this line of code sends data from the public property to the private data member
+                mDateAdded = value;
+            }
+        }
 
         public bool Find(int ProductID)
         {
-            mActive = true;
-            mDateAdded = Convert.ToDateTime("01/01/2020");
-            mProductID = ProductID;
-            mProductName = "Test Product";
-            mPrice = 9.99m;
-            mColour = "Red";
-            mQuantity = 100;
-            mCategory = "Test Category";
-            mBrand = "Test Brand";
-            return true;
+           clsDataConnection DB = new clsDataConnection();
+            // add the parameter for the ProductID to search for
+            DB.AddParameter("@ProductID", ProductID);
+            // execute the stored procedure
+            DB.Execute("sproc_tblProduct_FilterByProductID");
+            if (DB.Count == 1)
+            {// copy the data from the database to the private data members
+                    mProductID = Convert.ToInt32(DB.DataTable.Rows[0]["ProductID"]);
+                    mProductName = Convert.ToString(DB.DataTable.Rows[0]["ProductName"]);
+                    mPrice = Convert.ToDecimal(DB.DataTable.Rows[0]["Price"]);
+                    mColour = Convert.ToString(DB.DataTable.Rows[0]["Colour"]);
+                    mQuantity = Convert.ToInt32(DB.DataTable.Rows[0]["Quantity"]);
+                    mCategory = Convert.ToString(DB.DataTable.Rows[0]["Category"]);
+                    mBrand = Convert.ToString(DB.DataTable.Rows[0]["Brand"]);
+                    mActive = Convert.ToBoolean(DB.DataTable.Rows[0]["Active"]);
+                    mDateAdded = Convert.ToDateTime(DB.DataTable.Rows[0]["DateAdded"]);
+                return true;
+            }// if no record was found
+            else
+                {
+                    return false;
+            }
 
         }
     

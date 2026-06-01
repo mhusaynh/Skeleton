@@ -37,4 +37,24 @@ public partial class _1_DataEntry : System.Web.UI.Page
         Response.Redirect("ProductViewer.aspx");
 
     }
+
+    protected void btnFind_Click(object sender, EventArgs e)
+    {
+        clsproduct AnProduct = new clsproduct();
+        Int32 ProductID;
+        Boolean Found = false;
+        ProductID = Convert.ToInt32(txtProductID.Text);
+        Found = AnProduct.Find(ProductID);
+        if (Found == true)
+        {
+            txtProductName.Text = AnProduct.ProductName;
+            txtPrice.Text = AnProduct.Price.ToString();
+            txtColour.Text = AnProduct.Colour;
+            txtQuantity.Text = AnProduct.Quantity.ToString();
+            txtCategory.Text = AnProduct.Category;
+            txtBrand.Text = AnProduct.Brand;
+            txtDateAdded.Text = AnProduct.DateAdded.ToString();
+            chkActive.Checked = AnProduct.Active;
+        }
+    }
 }
