@@ -141,4 +141,16 @@ public partial class _1_DataEntry : System.Web.UI.Page
         txtQuantity.Text = OrderBook.ThisOrders.Quantity.ToString();
         chkCompleted.Text = OrderBook.ThisOrders.Completed.ToString();
     }
+
+    protected void btnCancel_Click(object sender, EventArgs e)
+    {
+        //redirect to the order list page
+        Response.Redirect("OrderList.aspx");
+    }
+
+    protected void btnMainMenu_Click(object sender, EventArgs e)
+    {
+        //redirect to the main menu page
+        Response.Redirect("TeamMainMenu.aspx");
+    }
 }
