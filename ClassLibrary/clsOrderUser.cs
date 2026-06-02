@@ -69,7 +69,7 @@ namespace ClassLibrary
             }
         }
 
-        public bool FindUser(string userName, string password)
+        public bool FindUser(string UserName, string Password)
         {
             //create an instance of the data connection
             clsDataConnection DB = new clsDataConnection();
