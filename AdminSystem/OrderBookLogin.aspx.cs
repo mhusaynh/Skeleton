@@ -17,15 +17,12 @@ public partial class OrderBookLogin : System.Web.UI.Page
     {
         //create an instance of the order user class
         clsOrderUser AnUser = new clsOrderUser();
-        //create the variables to store the username and password
-        string UserName = txtUserName.Text;
-        string Password = txtPassword.Text;
         //create a variable to store the result of the find user operation
         Boolean Found = false;
         //get the username entered by the user
-        UserName = Convert.ToString(txtUserName.Text);
+        string UserName = Convert.ToString(txtUserName.Text);
         //get the password entered by the user
-        Password = Convert.ToString(txtPassword.Text);
+        string Password = Convert.ToString(txtPassword.Text);
         //find the record
         Found = AnUser.FindUser(UserName, Password);
         //if username and/or password is empty
@@ -54,6 +51,7 @@ public partial class OrderBookLogin : System.Web.UI.Page
 
     protected void btnCancel_Click(object sender, EventArgs e)
     {
-
+        //redirect to the main menu
+        Response.Redirect("TeamMainMenu.aspx");
     }
 }
