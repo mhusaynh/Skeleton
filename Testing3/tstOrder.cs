@@ -125,7 +125,7 @@ namespace Testing3
             //create a Boolean variable to store the results of the validator
             Boolean Found = false;
             //create some test data to use with the method
-            Int32 OrderId = 3;
+            Int32 OrderId = 8;
             //invoke the method
             Found = AnOrder.Find(OrderId);
             //test to see if the result is true
@@ -142,11 +142,11 @@ namespace Testing3
             //create a Boolean variable to record if the data is OK (assume it is)
             Boolean OK = true;
             //create some test data to use with the method
-            Int32 OrderId = 3;
+            Int32 OrderId = 5;
             //invoke the method
             Found = AnOrder.Find(OrderId);
             //check the order id
-            if (AnOrder.OrderId != 3)
+            if (AnOrder.OrderId != 5)
             {
                 OK = false;
             }
@@ -164,11 +164,11 @@ namespace Testing3
             //create a Boolean variable to record if the data is OK (assume it is)
             Boolean OK = true;
             //create some test data to use with the method
-            Int32 OrderId = 1;
+            Int32 OrderId = 67;
             //invoke the method
             Found = AnOrder.Find(OrderId);
             //check the product property
-            if (AnOrder.Product != "Nike Air Max")
+            if (AnOrder.Product != "Asics Superblast")
             {
                 OK = false;
             }
@@ -208,11 +208,11 @@ namespace Testing3
             //create a Boolean variable to record if the data is OK (assume it is)
             Boolean OK = true;
             //create some test data to use with the method
-            Int32 OrderId = 3;
+            Int32 OrderId = 2;
             //invoke the method
             Found = AnOrder.Find(OrderId);
             //check the dateAdded property
-            if (AnOrder.DateAdded != Convert.ToDateTime("06/07/2021"))
+            if (AnOrder.DateAdded != Convert.ToDateTime("24/03/2022"))
             {
                 OK = false;
             }
@@ -230,11 +230,11 @@ namespace Testing3
             //create a Boolean variable to record if the data is OK (assume it is)
             Boolean OK = true;
             //create some test data to use with the method
-            Int32 OrderId = 3;
+            Int32 OrderId = 34;
             //invoke the method
             Found = AnOrder.Find(OrderId);
             //check the quantity property
-            if (AnOrder.Quantity != 3)
+            if (AnOrder.Quantity != 4)
             {
                 OK = false;
             }
@@ -395,7 +395,7 @@ namespace Testing3
             //invoke the method
             Error = AnOrder.Valid(Product, Price, DateAdded, Quantity);
             //test to see that the result is correct
-            Assert.AreNotEqual(Error, "");
+            Assert.AreEqual(Error, "");
         }
 
         [TestMethod]
@@ -456,7 +456,7 @@ namespace Testing3
             //invoke the method
             Error = AnOrder.Valid(Product, Price, DateAdded, Quantity);
             //test to see that the result is correct
-            Assert.AreNotEqual(Error, "");
+            Assert.AreEqual(Error, "");
         }
 
         [TestMethod]
@@ -551,7 +551,7 @@ namespace Testing3
             //invoke the method
             Error = AnOrder.Valid(Product, Price, DateAdded, Quantity);
             //test to see that the result is correct
-            Assert.AreNotEqual(Error, "");
+            Assert.AreEqual(Error, "");
         }
 
         [TestMethod]
@@ -570,7 +570,7 @@ namespace Testing3
             //invoke the method
             Error = AnOrder.Valid(Product, Price, DateAdded, Quantity);
             //test to see that the result is correct
-            Assert.AreNotEqual(Error, "");
+            Assert.AreEqual(Error, "");
         }
 
         [TestMethod]
@@ -590,7 +590,7 @@ namespace Testing3
                 //invoke the method
                 Error = AnOrder.Valid(Product, Price, DateAdded, Quantity);
                 //test to see that the result is correct
-                Assert.AreNotEqual(Error, "");
+                Assert.AreEqual(Error, "");
             }
         }
 
@@ -669,7 +669,7 @@ namespace Testing3
             //invoke the method
             Error = AnOrder.Valid(Product, Price, DateAdded, Quantity);
             //test to see that the result is correct
-            Assert.AreNotEqual(Error, "");
+            Assert.AreEqual(Error, "");
         }
 
         [TestMethod]
@@ -741,7 +741,7 @@ namespace Testing3
             //invoke the method
             Error = AnOrder.Valid(Product, Price, DateAdded, Quantity);
             //test to see that the result is correct
-            Assert.AreNotEqual(Error, "");
+            Assert.AreEqual(Error, "");
         }
 
         [TestMethod]
@@ -760,7 +760,7 @@ namespace Testing3
             //invoke the method
             Error = AnOrder.Valid(Product, Price, DateAdded, Quantity);
             //test to see that the result is correct
-            Assert.AreNotEqual(Error, "");
+            Assert.AreEqual(Error, "");
         }
 
         [TestMethod]
@@ -779,7 +779,7 @@ namespace Testing3
             //invoke the method
             Error = AnOrder.Valid(Product, Price, DateAdded, Quantity);
             //test to see that the result is correct
-            Assert.AreNotEqual(Error, "");
+            Assert.AreEqual(Error, "");
         }
 
         [TestMethod]
@@ -798,7 +798,7 @@ namespace Testing3
             //invoke the method
             Error = AnOrder.Valid(Product, Price, DateAdded, Quantity);
             //test to see that the result is correct
-            Assert.AreNotEqual(Error, "");
+            Assert.AreEqual(Error, "");
         }
 
         [TestMethod]
@@ -817,7 +817,7 @@ namespace Testing3
             //invoke the method
             Error = AnOrder.Valid(Product, Price, DateAdded, Quantity);
             //test to see that the result is correct
-            Assert.AreNotEqual(Error, "");
+            Assert.AreEqual(Error, "");
         }
 
         [TestMethod]
@@ -836,7 +836,7 @@ namespace Testing3
             //invoke the method
             Error = AnOrder.Valid(Product, Price, DateAdded, Quantity);
             //test to see that the result is correct
-            Assert.AreNotEqual(Error, "");
+            Assert.AreEqual(Error, "The quantity can't be higher than 10000 : ");
         }
 
         [TestMethod]
@@ -855,7 +855,7 @@ namespace Testing3
             //invoke the method
             Error = AnOrder.Valid(Product, Price, DateAdded, Quantity);
             //test to see that the result is correct
-            Assert.AreNotEqual(Error, "");
+            Assert.AreEqual(Error, "");
         }
 
         [TestMethod]

@@ -216,7 +216,7 @@ namespace Testing3
             //variable to store the outcome
             Boolean OK = true;
             //apply a product that doesn't exist
-            FilteredOrders.ReportByProduct("Nike Air Force");
+            FilteredOrders.ReportByProduct("Nike Pro");
             //check that the correct number of records are found
             if (FilteredOrders.Count == 2)
             {
