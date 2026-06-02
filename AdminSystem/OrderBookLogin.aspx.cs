@@ -25,6 +25,8 @@ public partial class OrderBookLogin : System.Web.UI.Page
         string Password = Convert.ToString(txtPassword.Text);
         //find the record
         Found = AnUser.FindUser(UserName, Password);
+        //Add a session to capture the user name
+        Session["AnUser"] = AnUser;
         //if username and/or password is empty
         if (txtUserName.Text == "")
         {
