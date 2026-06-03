@@ -94,5 +94,23 @@ namespace ClassLibrary
             }
         }
 
+        public int Add()
+        {
+            //adds a new record to the database based on the values of mThisProduct
+            //connect to the database
+            clsDataConnection DB = new clsDataConnection();
+            //set the parameters for the stored procedure
+            DB.AddParameter("@ProductName", mThisProduct.ProductName);
+            DB.AddParameter("@Price", mThisProduct.Price);
+            DB.AddParameter("@Colour", mThisProduct.Colour);
+            DB.AddParameter("@Quantity", mThisProduct.Quantity);
+            DB.AddParameter("@Category", mThisProduct.Category);
+            DB.AddParameter("@Brand", mThisProduct.Brand);
+            DB.AddParameter("@DateAdded", mThisProduct.DateAdded);
+            DB.AddParameter("@Active", mThisProduct.Active);
+            //execute the query returning the primary key value
+            return DB.Execute("sproc_tblProduct_Insert");
+
+        }
     }
 }

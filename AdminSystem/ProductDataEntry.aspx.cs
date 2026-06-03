@@ -59,10 +59,17 @@ public partial class _1_DataEntry : System.Web.UI.Page
             //capture the active status
             AnProduct.Active = chkActive.Checked;
 
-            //store the product in the session object
-            Session["AnProduct"] = AnProduct;
-            //redirect to the viewer page
-            Response.Redirect("ProductViewer.aspx");
+            //create a new instance of the product collection
+            clsProductCollection ProductList = new clsProductCollection();
+
+            //set the ThisProduct property
+            ProductList.ThisProduct = AnProduct;
+
+            //add the new record
+            ProductList.Add();
+
+            //redirect back to the list page
+            Response.Redirect("ProductList.aspx");
         }
         else
         {
