@@ -42,7 +42,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="clsAdmin.cs" />
+    <Compile Include="clsAdminCollection.cs" />
+    <Compile Include="clsAdminUser.cs" />
     <Compile Include="clsDataConnection.cs" />
+    <Compile Include="clsproduct.cs" />
+    <Compile Include="clsOrder.cs" />
+    <Compile Include="clsProductCollection.cs" />
     <Compile Include="clsUser.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
