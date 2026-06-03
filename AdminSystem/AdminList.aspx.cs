@@ -18,7 +18,12 @@ public partial class _1_List : System.Web.UI.Page
             //update the list box
             DisplayAdmin();
         }
-
+        //create a new instance of clsAdminUser
+        clsAdminUser AnUser = new clsAdminUser();
+        //get data from the session object
+        AnUser = (clsAdminUser)Session["AnUser"];
+        //displaythe user name
+        Response.Write("Logged in as " + AnUser.Username);
 
     }
 
@@ -125,5 +130,11 @@ public partial class _1_List : System.Web.UI.Page
         IstAdminList.DataTextField = "UserName";
         //bind the data to the list
         IstAdminList.DataBind();
+    }
+
+    protected void btnReturntoMainMenu_Click(object sender, EventArgs e)
+    {
+        //redirect to the main menu
+        Response.Redirect("TeamMainMenu.aspx");
     }
 }

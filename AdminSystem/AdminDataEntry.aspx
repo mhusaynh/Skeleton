@@ -31,12 +31,13 @@
             <asp:CheckBox ID="chkStock" runat="server" style="z-index: 1; left: 107px; top: 265px; position: absolute" Text="Stock" />
         </p>
         <p>
-            <asp:Label ID="IbIError" runat="server" style="z-index: 1; left: 21px; top: 297px; position: absolute" width="59px"></asp:Label>
-        </p>
-        <asp:Button ID="btnOK" runat="server" OnClick="btnOK_Click" style="z-index: 1; left: 16px; top: 337px; position: absolute" Text="OK" width="59px" />
-        <asp:Button ID="btnCancel" runat="server" style="z-index: 1; left: 118px; top: 337px; position: absolute" Text="Cancel" width="59px" />
-        <p>
             &nbsp;</p>
+        <asp:Button ID="btnOK" runat="server" OnClick="btnOK_Click" style="z-index: 1; left: 17px; top: 319px; position: absolute" Text="OK" width="59px" />
+        <asp:Button ID="btnCancel" runat="server" style="z-index: 1; left: 125px; top: 318px; position: absolute" Text="Cancel" width="59px" OnClick="btnCancel_Click" />
+            <asp:Button ID="btnReturntoMainMenu" runat="server" OnClick="btnReturntoMainMenu_Click" style="z-index: 1; left: 345px; top: 320px; position: absolute" Text="Return to Main Menu" />
+        <p>
+            <asp:Label ID="IbIError" runat="server" style="z-index: 1; left: 21px; top: 404px; position: absolute; width: 79px;" ForeColor="#FF3300"></asp:Label>
+        </p>
         <p>
             <asp:Label ID="lblUsername" runat="server" style="z-index: 1; left: 9px; top: 95px; position: absolute; height: 22px; width: 82px;" Text="UserName"></asp:Label>
         </p>

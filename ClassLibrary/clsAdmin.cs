@@ -139,11 +139,11 @@ namespace ClassLibrary
                 //record the error
                 Error = Error + "The user name may not be blank : ";
             }
-            //if the userName is greater than 6 characters
-            if (userName.Length > 6)
+            //if the userName is greater than 50 characters
+            if (userName.Length > 50)
             {
                 //record the error
-                Error = Error + "The user name must be less than 6 characters : ";
+                Error = Error + "The user name must be less than 50 characters : ";
             }
             // is the email blank
             if (email.Length == 0)
@@ -163,11 +163,11 @@ namespace ClassLibrary
                 //record the error
                 Error = Error + "The password may not be blank : ";
             }
-            //if the password is greater than 16 characters
-            if (password.Length > 16)
+            //if the password is greater than 50 characters
+            if (password.Length > 50)
             {
                 //record the error
-                Error = Error + "The password must be less than 16 characters : ";
+                Error = Error + "The password must be less than 50 characters : ";
             }
             //is the order blank
             if (order.Length == 0)

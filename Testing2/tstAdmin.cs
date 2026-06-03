@@ -307,7 +307,8 @@ namespace Testing2
             //string variable to store any error message
             String Error = "";
             //create some test data to pass to the method
-            string UserName = "aaaaa"; //this should be ok
+            string UserName = "";
+            UserName = UserName.PadRight(49, 'a'); //this should be ok
             //invoke the method
             Error = AnAdmin.Valid(UserName, Email, Password, Order);
             //test to see that the result is correct
@@ -321,7 +322,8 @@ namespace Testing2
             //string variable to store any error message
             String Error = "";
             //create some test data to pass to the method
-            string UserName = "aaaaaa"; //this should be ok
+            string UserName = "";
+            UserName = UserName.PadRight(50, 'a'); //this should be ok
             //invoke the method
             Error = AnAdmin.Valid(UserName, Email, Password, Order);
             //test to see that the result is correct
@@ -335,7 +337,8 @@ namespace Testing2
             //string variable to store any error message
             String Error = "";
             //create some test data to pass to the method
-            string UserName = "aaa"; //this should be ok
+            string UserName = "";
+            UserName = UserName.PadRight(25, 'a'); //this should be ok
             //invoke the method
             Error = AnAdmin.Valid(UserName, Email, Password, Order);
             //test to see that the result is correct
@@ -349,8 +352,9 @@ namespace Testing2
             //string variable to store any error message
             String Error = "";
             //create some test data to pass to the method
-            string UserName = "aaaaaaa"; //this should trigger an error
-                                         //invoke the method
+            string UserName = "";
+            UserName = UserName.PadRight(51, 'a'); //this should trigger an error
+            //invoke the method
             Error = AnAdmin.Valid(UserName, Email, Password, Order);
             //test to see that the result is correct
             Assert.AreNotEqual(Error, "");
@@ -536,7 +540,7 @@ namespace Testing2
             String Error = "";
             //create some test data to pass to the method
             string Password = "";
-            Password = Password.PadRight(15, 'a');
+            Password = Password.PadRight(49, 'a');
             //invoke the method
             Error = AnAdmin.Valid(UserName, Email, Password, Order);
             //test to see that the result is correct
@@ -551,7 +555,7 @@ namespace Testing2
             String Error = "";
             //create some test data to pass to the method
             string Password = "";
-            Password = Password.PadRight(16, 'a');
+            Password = Password.PadRight(50, 'a');
             //invoke the method
             Error = AnAdmin.Valid(UserName, Email, Password, Order);
             //test to see that the result is correct
@@ -580,7 +584,7 @@ namespace Testing2
             String Error = "";
             //create some test data to pass to the method
             string Password = "";
-            Password = Password.PadRight(8, 'a');
+            Password = Password.PadRight(25, 'a');
             //invoke the method
             Error = AnAdmin.Valid(UserName, Email, Password, Order);
             //test to see that the result is correct

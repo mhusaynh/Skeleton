@@ -131,4 +131,16 @@ public partial class _1_DataEntry : System.Web.UI.Page
         txtOrder.Text = AdminBook.ThisAdmin.Order.ToString();
         chkStock.Checked = AdminBook.ThisAdmin.Stock;
     }
+
+    protected void btnReturntoMainMenu_Click(object sender, EventArgs e)
+    {
+        //redirect to the main menu
+        Response.Redirect("TeamMainMenu.aspx");
+    }
+
+    protected void btnCancel_Click(object sender, EventArgs e)
+    {
+        //redirect to the list page
+        Response.Redirect("AdminList.aspx");
+    }
 }

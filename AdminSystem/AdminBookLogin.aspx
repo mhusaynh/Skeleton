@@ -24,7 +24,7 @@
         <p>
             &nbsp;</p>
         <asp:Button ID="btnLogin" runat="server" style="margin-left: 123px" Text="Login" Width="56px" OnClick="btnLogin_Click" />
-        <asp:Button ID="btnCancel" runat="server" style="margin-left: 99px" Text="Cancel" Width="56px" />
+        <asp:Button ID="btnCancel" runat="server" style="margin-left: 99px" Text="Cancel" Width="56px" OnClick="btnCancel_Click" />
     </form>
 </body>
 </html>
