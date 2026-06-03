@@ -77,10 +77,9 @@ namespace ClassLibrary
                 mUserName = value;
             }
         }
-        public Int32 UserId
-        {
+        public Int32 UserId { 
             get
-            {
+            { 
                 return mUserId;
             }
             set
@@ -95,7 +94,7 @@ namespace ClassLibrary
             mUserName = "husayn";
             mPassword = "password123";
             mAddress = "123 street";
-            mEmail = "husayn@hotmail.ocm";
+            mEmail = "husayn@hotmail.com";
             mActive = true;
             mDateAdded = Convert.ToDateTime("23/12/2022");
             return true;
