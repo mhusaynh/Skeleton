@@ -25,11 +25,12 @@
         <p style="margin-top: 16px">
             <asp:Button ID="btnApplyFilter" runat="server" OnClick="btnApplyFilter_Click" Text="Apply Filter" />
             <asp:Button ID="btnClearFilter" runat="server" OnClick="btnClearFilter_Click" style="margin-left: 110px" Text="Clear Filter" width="124px" />
+            <asp:Button ID="btnReturntoMainMenu" runat="server" OnClick="btnReturntoMainMenu_Click" style="margin-left: 176px" Text="Return to Main Menu" />
         </p>
         <p style="margin-top: 16px">
             &nbsp;</p>
         <p style="margin-top: 16px">
-        <asp:Label ID="lblError" runat="server"></asp:Label>
+        <asp:Label ID="lblError" runat="server" ForeColor="#FF3300"></asp:Label>
         </p>
     </form>
 </body>
