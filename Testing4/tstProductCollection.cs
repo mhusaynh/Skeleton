@@ -137,6 +137,48 @@ namespace Testing4
             //test to see that the two values are the same
             Assert.AreEqual(AllProducts.ThisProduct, TestItem);
         }
+        [TestMethod]
+        public void UpdateMethodok()
+        {
+            //create an instance of the class we want to create
+            clsProductCollection AllProducts = new clsProductCollection();
+            //create the item of test data
+            clsproduct TestItem = new clsproduct();
+            //variable to store the primary key
+            Int32 PrimaryKey = 0;
+            //set its properties
+            TestItem.ProductName = "Test Product";
+            TestItem.Price = 9.99m;
+            TestItem.Colour = "Black";
+            TestItem.Quantity = 10;
+            TestItem.Category = "Test Category";
+            TestItem.Brand = "Test Brand";
+            TestItem.DateAdded = DateTime.Now.Date;
+            TestItem.Active = true;
+            //assign the data to the property
+            AllProducts.ThisProduct = TestItem;
+            //add the record
+            PrimaryKey = AllProducts.Add();
+            //set the primary key of the test data
+            TestItem.ProductID = PrimaryKey;
+            //modify the test data
+            TestItem.ProductName = "Updated Product";
+            TestItem.Price = 19.99m;
+            TestItem.Colour = "White";
+            TestItem.Quantity = 20;
+            TestItem.Category = "Updated Category";
+            TestItem.Brand = "Updated Brand";
+            TestItem.DateAdded = DateTime.Now.Date;
+            TestItem.Active = false;
+            //assign the modified data to the property
+            AllProducts.ThisProduct = TestItem;
+            //update the record
+            AllProducts.Update();
+            //find the record
+            AllProducts.ThisProduct.Find(PrimaryKey);
+            //test to see that the two values are the same
+            Assert.AreEqual(AllProducts.ThisProduct, TestItem);
+        }
     }
 }
 
