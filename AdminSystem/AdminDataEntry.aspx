@@ -6,7 +6,7 @@
 <head runat="server">
     <title></title>
 </head>
-<body style="height: 271px">
+<body style="height: 271px;  background-color: #e8f4fd">
     <form id="form1" runat="server">
         <div>
             This is the Admin Data Entry Page</div>
@@ -21,7 +21,7 @@
             <asp:TextBox ID="txtUserName" runat="server" style="z-index: 1; left: 106px; top: 94px; position: absolute" width="168px"></asp:TextBox>
             <asp:Label ID="lblEmail" runat="server" style="z-index: 1; left: 18px; top: 133px; position: absolute" Text="Email" width="60px"></asp:Label>
         </p>
-        <asp:TextBox ID="txtPassword" runat="server" style="z-index: 1; left: 104px; top: 171px; position: absolute" width="168px"></asp:TextBox>
+        <asp:TextBox ID="txtPassword" runat="server" style="z-index: 1; left: 104px; top: 171px; position: absolute; right: 1045px;" width="168px"></asp:TextBox>
         <p>
             <asp:Label ID="lblPassword" runat="server" style="z-index: 1; left: 15px; top: 171px; position: absolute; height: 19px" Text="Password" width="60px"></asp:Label>
             <asp:Label ID="lblOrder" runat="server" style="z-index: 1; left: 20px; top: 215px; position: absolute" Text="Order" width="60px"></asp:Label>

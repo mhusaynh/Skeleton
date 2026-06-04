@@ -6,12 +6,12 @@
 <head runat="server">
     <title></title>
 </head>
-<body style="height: 418px">
+<body style="height: 418px; background-color: #e8f4fd">
     <form id="form1" runat="server">
         <div>
-        </div>
+        
         <p>
-            &nbsp;Admin Book Login Page</p>
+            <strong>Admin Book Login Page</strong></p>
         <p>
             &nbsp;</p>
         <p>
@@ -25,6 +25,7 @@
             &nbsp;</p>
         <asp:Button ID="btnLogin" runat="server" style="margin-left: 123px" Text="Login" Width="56px" OnClick="btnLogin_Click" />
         <asp:Button ID="btnCancel" runat="server" style="margin-left: 99px" Text="Cancel" Width="56px" OnClick="btnCancel_Click" />
+            </div>
     </form>
 </body>
 </html>
