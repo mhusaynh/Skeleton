@@ -6,7 +6,7 @@
 <head runat="server">
     <title></title>
 </head>
-<body>
+<body style="background-color: #2E7594">
     <form id="form1" runat="server">
         <div>
             <asp:ListBox ID="lstOrderForm" runat="server" style="z-index: 1; left: 10px; top: 15px; position: absolute; height: 456px; width: 481px" OnSelectedIndexChanged="lstOrderForm_SelectedIndexChanged"></asp:ListBox>
