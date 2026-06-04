@@ -345,7 +345,7 @@ namespace Testing3
             //string variable to store any error message
             String Error = "";
             //create some test data to pass to the method
-            String Product = "aaaaa"; //this should be ok
+            String Product = "aaaaaa"; //this should be ok
             //invoke the method
             Error = AnOrder.Valid(Product, Price, DateAdded, Quantity);
             //test to see that the result is correct
@@ -375,7 +375,7 @@ namespace Testing3
             //string variable to store any error message
             String Error = "";
             //create some test data to pass to the method
-            String Product = "aaa"; //this should fail
+            String Product = "aaaaaaa"; //this should fail
             //invoke the method
             Error = AnOrder.Valid(Product, Price, DateAdded, Quantity);
             //test to see that the result is correct

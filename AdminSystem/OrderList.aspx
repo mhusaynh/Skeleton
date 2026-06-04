@@ -6,7 +6,7 @@
 <head runat="server">
     <title></title>
 </head>
-<body>
+<body style="background-color: #73633C">
     <form id="List" runat="server">
         <div>
             <asp:Button ID="btnMainMenu" runat="server" style="z-index: 1; left: 392px; top: 558px; position: absolute" Text="Return to Main Menu" OnClick="btnMainMenu_Click" />
