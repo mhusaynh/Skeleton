@@ -14,15 +14,17 @@ public partial class _1Viewer : System.Web.UI.Page
         clsUser clsUser = new clsUser();
         clsUser AUser = clsUser;
         //Get the data from the session object
-       
+        AUser = (clsUser)Session["AUser"];
+
         //Display the user data for this entry
 
         Response.Write(AUser.UserId);
+        Response.Write(AUser.UserName);
         Response.Write(AUser.Email);
         Response.Write(AUser.Password);
         Response.Write(AUser.Address);
         Response.Write(AUser.DateAdded);
 
-        AUser = (clsUser)Session["AUser"];
+      
     }
 }

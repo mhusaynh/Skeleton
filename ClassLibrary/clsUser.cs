@@ -90,14 +90,24 @@ namespace ClassLibrary
 
         public bool Find(int userId)
         {
-            mUserId = 1;
-            mUserName = "husayn";
-            mPassword = "password123";
-            mAddress = "123 street";
-            mEmail = "husayn@hotmail.com";
-            mActive = true;
-            mDateAdded = Convert.ToDateTime("23/12/2022");
-            return true;
+            clsDataConnection DB = new clsDataConnection();
+            DB.AddParameter("@UserId", userId);
+            DB.Execute("sproc_tblUser_FilterByUserId");
+            if (DB.Count == 1)
+            {
+                mUserId = Convert.ToInt32(DB.DataTable.Rows[0]["UserId"]);
+                mUserName = Convert.ToString(DB.DataTable.Rows[0]["UserName"]);
+                mPassword = Convert.ToString(DB.DataTable.Rows[0]["Password"]);
+                mAddress = Convert.ToString(DB.DataTable.Rows[0]["Address"]);
+                mEmail = Convert.ToString(DB.DataTable.Rows[0]["Email"]);
+                mActive = Convert.ToBoolean(DB.DataTable.Rows[0]["Active"]);
+                mDateAdded = Convert.ToDateTime(DB.DataTable.Rows[0]["DateAdded"]);
+                return true;
+            }
+            else
+            {
+                return false;
+            }
         }
     }
 }

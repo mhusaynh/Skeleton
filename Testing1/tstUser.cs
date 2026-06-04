@@ -5,7 +5,7 @@ using System;
 namespace Testing1
 {
     [TestClass]
-    public class tstUser
+    public class TstUser
     {
         [TestMethod]
         public void InstanceOK()
@@ -15,6 +15,18 @@ namespace Testing1
             Assert.IsNotNull(AnAddress);
         }
 
+        [TestMethod]
+        public void FindMethodOK()
+        {
+            clsUser AUser = new clsUser();
+            Boolean Found = false;
+            Int32 UserId = 1;
+            Found = AUser.Find(UserId);
+            Assert.IsTrue(Found);
+        }
+
+
+        [TestMethod]
         public void UserIdPropertyOK()
         {
             clsUser AUser = new clsUser();
@@ -25,6 +37,7 @@ namespace Testing1
 
             Assert.AreEqual(AUser.UserId, TestData);
         }
+        [TestMethod]
         public void UserNamePropertyOK()
         {
             clsUser AUser = new clsUser();
@@ -33,6 +46,7 @@ namespace Testing1
             Assert.AreEqual(AUser.UserName, TestData);
         }
 
+        [TestMethod]
         public void EmailPropertyOK()
         {
             clsUser AUser = new clsUser();
@@ -44,6 +58,7 @@ namespace Testing1
             Assert.AreEqual(AUser.Email, TestData);
         }
 
+        [TestMethod]
         public void PasswordPropertyOK()
         {
             clsUser AUser = new clsUser();
@@ -55,6 +70,7 @@ namespace Testing1
             Assert.AreEqual(AUser.Password, TestData);
         }
 
+        [TestMethod]
         public void AddressPropertyOK()
         {
             clsUser AUser = new clsUser();
@@ -66,6 +82,7 @@ namespace Testing1
             Assert.AreEqual(AUser.Address, TestData);
         }
 
+        [TestMethod]
         public void ActivePropertyOK()
         {
             clsUser AUser = new clsUser();
@@ -77,26 +94,7 @@ namespace Testing1
             Assert.AreEqual(AUser.Active, TestData);
         }
 
-        public void DateAddedPropertyOK()
-        {
-            clsUser AUser = new clsUser();
-
-            DateTime TestData = DateTime.Now.Date;
-
-            AUser.DateAdded = DateTime.Now.Date;
-
-            Assert.AreEqual(AUser.DateAdded, TestData);
-        }
-
-        public void FindMethodOK()
-        {
-            clsUser AUser = new clsUser();
-            Boolean Found = false;
-            Int32 UserId = 1;
-            Found = AUser.Find(UserId);
-            Assert.IsTrue(Found);
-        }
-
+        [TestMethod]
         public void TestUserIdFound()
         {
             clsUser AUser = new clsUser();
@@ -110,6 +108,19 @@ namespace Testing1
             }
             Assert.IsTrue(OK);
         }
+        [TestMethod]
+        public void DateAddedPropertyOK()
+        {
+            clsUser AUser = new clsUser();
+
+            DateTime TestData = DateTime.Now.Date;
+
+            AUser.DateAdded = DateTime.Now.Date;
+
+            Assert.AreEqual(AUser.DateAdded, TestData);
+        }
+
+        [TestMethod]
         public void TestEmailFound()
         {
             clsUser AUser = new clsUser();
@@ -117,13 +128,14 @@ namespace Testing1
             Boolean OK = true;
             Int32 UserId = 1;
             Found = AUser.Find(UserId);
-            if (AUser.Email != "Test")
+            if (AUser.Email != "husayn@gmail.com")
             {
                 OK = false;
             }
             Assert.IsTrue(OK);
         }
 
+        [TestMethod]
         public void TestPasswordFound()
         {
             clsUser AUser = new clsUser();
@@ -131,26 +143,28 @@ namespace Testing1
             Boolean OK = true;
             Int32 UserId = 1;
             Found = AUser.Find(UserId);
-            if (AUser.Password != "Test")
+            if (AUser.Password != "Password123")
             {
                 OK = false;
             }
             Assert.IsTrue(OK);
         }
-         public void TestAddressFound()
+        [TestMethod]
+        public void TestAddressFound()
         {
             clsUser AUser = new clsUser();
             Boolean Found = false;
             Boolean OK = true;
             Int32 UserId = 1;
             Found = AUser.Find(UserId);
-            if (AUser.Address != "Test")
+            if (AUser.Address != "123 Address")
             {
                 OK = false;
             }
             Assert.IsTrue(OK);
          }
-         public void TestActiveFound()
+        [TestMethod]
+        public void TestActiveFound()
         {
             clsUser AUser = new clsUser();
             Boolean Found = false;
@@ -163,19 +177,21 @@ namespace Testing1
             }
             Assert.IsTrue(OK);
          }
-          public void TestDateAddedFound()
+        [TestMethod]
+        public void TestDateAddedFound()
         {
             clsUser AUser = new clsUser();
             Boolean Found = false;
             Boolean OK = true;
             Int32 UserId = 1;
             Found = AUser.Find(UserId);
-            if (AUser.DateAdded != DateTime.Now.Date)
+            if (AUser.DateAdded != Convert.ToDateTime("05/05/2026 12:10:54"))
             {
                 OK = false;
             }
             Assert.IsTrue(OK);
         }
+        [TestMethod]
         public void TestUserNameFound()
         {
             clsUser AUser = new clsUser();
@@ -183,7 +199,7 @@ namespace Testing1
             Boolean OK = true;
             Int32 UserId = 1;
             Found = AUser.Find(UserId);
-            if (AUser.UserName != "Test")
+            if (AUser.UserName != "HUSAYN")
             {
                 OK = false;
             }
