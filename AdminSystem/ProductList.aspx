@@ -12,10 +12,15 @@
             <asp:Label ID="lblProductList" runat="server" Text="Product List"></asp:Label>
             <br />
             <br />
-            <asp:ListBox ID="lstProductList" runat="server"></asp:ListBox>
+            <asp:ListBox ID="lstProductList" runat="server" Height="564px" Width="660px"></asp:ListBox>
             <br />
             <br />
             <asp:Button ID="btnAdd" runat="server" OnClick="btnAdd_Click" Text="Add" />
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <asp:Button ID="btnEdit" runat="server" OnClick="btnEdit_Click" Text="Edit" />
+            <br />
+            <br />
+            <asp:Label ID="lblError" runat="server" ForeColor="Red"></asp:Label>
         </div>
     </form>
 </body>
