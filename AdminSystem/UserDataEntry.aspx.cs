@@ -23,11 +23,29 @@ public partial class _1_DataEntry : System.Web.UI.Page
         // Create new instance of ClsUser
         // capture form into a new clsUser and store the object in Session
         clsUser AUser = new clsUser();
-        AUser.UserId = Convert.ToInt32(txtUserId.Text);
-        AUser.Email = txtEmail.Text;
-        AUser.Password = txtPassword.Text;
-        AUser.Address = txtAddress.Text;
-        AUser.DateAdded = DateTime.Now;
+        string UserId = txtUserId.Text;
+        string UserName = txtUserName.Text;
+        string Password = txtPassword.Text;
+        string Email = txtEmail.Text;
+        string Address = txtAddress.Text;
+        string DateAdded = txtDateAdded.Text;
+        string Active = chkActive.Text;
+        string Error = "";
+        Error = AUser.Valid(UserName, Email, Password, Address, Convert.ToDateTime(DateAdded));
+        if (Error == "")
+        {
+            AUser.UserId = Convert.ToInt32(UserId);
+            AUser.UserName = UserName;
+            AUser.Password = Password;
+            AUser.Email = Email;
+            AUser.Address = Address;
+            AUser.DateAdded = Convert.ToDateTime(DateAdded);
+        }
+        else
+        {
+            lblError.Text = Error;
+            return;
+        }
 
         // store the object under the key expected by viewer
         Session["AUser"] = AUser;
@@ -52,6 +70,6 @@ public partial class _1_DataEntry : System.Web.UI.Page
             txtUserId.Text = AUser.UserId.ToString();
             txtUserName.Text = AUser.UserName;
             txtDateAdded.Text = AUser.DateAdded.ToString();
-        }   
+        }
     }
 }
