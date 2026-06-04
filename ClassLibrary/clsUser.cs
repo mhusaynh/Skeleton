@@ -109,5 +109,53 @@ namespace ClassLibrary
                 return false;
             }
         }
+
+
+        public string Valid(string userName, string email, string password, string address, DateTime dateAdded)
+        {
+            string Error = "";
+            if (userName.Length == 0)
+            {
+                Error = Error + "The user name may not be blank. ";
+            }
+            if (UserName.Length > 50)
+            {
+                Error = Error + "The user name must be less than 50 characters. ";
+            }
+            if (email.Length == 0)
+            {
+                Error = Error + "The email may not be blank. ";
+            }
+            if (email.Length > 50)
+            {
+                Error = Error + "The email must be less than 50 characters. ";
+            }
+            if (password.Length == 0)
+            {
+                Error = Error + "The password may not be blank. ";
+            }
+            if (password.Length > 50)
+            {
+                Error = Error + "The password must be less than 50 characters. ";
+            }
+            if (address.Length == 0)
+            {
+                Error = Error + "The address may not be blank. ";
+            }
+            if (address.Length > 50)
+            {
+                Error = Error + "The address must be less than 50 characters. ";
+            }
+            if (dateAdded < DateTime.Now.Date)
+            {
+                Error = Error + "The date cannot be in the past. ";
+            }
+            if (dateAdded > DateTime.Now.Date)
+            {
+                Error = Error + "The date cannot be in the future. ";
+            }
+
+            return Error;
+        }
     }
 }
