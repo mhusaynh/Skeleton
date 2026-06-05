@@ -54,7 +54,7 @@ namespace Testing4
         {
             //create an instance of the class we want to create
             clsProductCollection AllProducts = new clsProductCollection();
-        
+
             //test to see that the two values are the same
             Assert.AreEqual(AllProducts.Count, AllProducts.ProductList.Count);
 
@@ -212,8 +212,57 @@ namespace Testing4
             //test to see that the record was not found
             Assert.IsFalse(Found);
         }
+        [TestMethod]
+        public void ReportByProductNameMethodok()
+        {
+            //create an instance of the class we want to create
+            clsProductCollection AllProducts = new clsProductCollection();
+            //create an instance of the filtered data
+            clsProductCollection FilteredProducts = new clsProductCollection();
+            //apply a blank string (should return all records)
+            FilteredProducts.ReportByProductName("");
+            //test to see that the two values are the same
+            Assert.AreEqual(AllProducts.Count, FilteredProducts.Count);
+
+        }
+        [TestMethod]
+        public void ReportByProductNameNoneFound()
+        {
+            //create an instance of the filtered data
+            clsProductCollection FilteredProducts = new clsProductCollection();
+            //apply a product name that doesn't exist
+            FilteredProducts.ReportByProductName("xxx xxx");
+            //test to see that there are no records
+            Assert.AreEqual(0, FilteredProducts.Count);
+        }
+        [TestMethod]
+        public void ReportByProductNameTestDataFound()
+        {
+            //create an instance of the filtered data
+            clsProductCollection FilteredProducts = new clsProductCollection();
+           //variable to store outcome
+            Boolean OK = true;
+            //apply a product name that doesn't exist
+            FilteredProducts.ReportByProductName("Test Product");
+            //check that the correct number of records are found
+            if (FilteredProducts.Count >= 1)
+            {
+                //check that the first record is ID 5
+                if (FilteredProducts.ProductList[0].ProductName.StartsWith("Test") == false)
+                {
+                    OK = false;
+                }
+            }
+            else
+            {
+                OK = false;
+            }
+            //test to see that there are no records
+            Assert.IsTrue(OK);
+        }
     }
 }
+
 
 
 

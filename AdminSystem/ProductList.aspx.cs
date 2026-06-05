@@ -16,10 +16,17 @@ public partial class _1_List : System.Web.UI.Page
             // Update the list box
             DisplayProducts();
         }
-    }
+        if (Session["AnUser"] != null)
+        {
+            clsProductUser AnUser = new clsProductUser();
 
-    void DisplayProducts()
-    {
+            AnUser = (clsProductUser)Session["AnUser"];
+
+            Response.Write("Logged in as:" + AnUser.Username);
+        }
+    }
+        void DisplayProducts()
+        {
             // Create an instance of the product collection
             clsProductCollection Products = new clsProductCollection();
             // Set the data source to the list of products in the collection
@@ -30,7 +37,8 @@ public partial class _1_List : System.Web.UI.Page
             lstProductList.DataTextField = "ProductName";
             // Bind the data to the list
             lstProductList.DataBind();
-    }
+        }
+    
 
     protected void btnAdd_Click(object sender, EventArgs e)
     {
@@ -79,5 +87,44 @@ public partial class _1_List : System.Web.UI.Page
             // If no record has been selected
             lblError.Text = "Please select a record to delete from the list";
         }
+    }
+    protected void btnApplyFilter_Click(object sender, EventArgs e)
+    {
+        // Create an instance of the product collection
+        clsProductCollection Products = new clsProductCollection();
+        // Filter the list based on the product name
+        Products.ReportByProductName(txtFilter.Text);
+        // Set the data source to the list of products in the collection
+        lstProductList.DataSource = Products.ProductList;
+        // Set the name of the primary key
+        lstProductList.DataValueField = "ProductID";
+        // Set the data field to display
+        lstProductList.DataTextField = "ProductName";
+        // Bind the data to the list
+        lstProductList.DataBind();
+
+    }
+
+    protected void btnClearFilter_Click(object sender, EventArgs e)
+    {
+        // Create an instance of the product collection
+        clsProductCollection Products = new clsProductCollection();
+        // Display all products
+        Products.ReportByProductName("");
+        // Clear the filter text box
+        txtFilter.Text = "";
+        // Set the data source to the list of products in the collection
+        lstProductList.DataSource = Products.ProductList;
+        // Set the name of the primary key
+        lstProductList.DataValueField = "ProductID";
+        // Set the data field to display
+        lstProductList.DataTextField = "ProductName";
+        // Bind the data to the list
+        lstProductList.DataBind();
+    }
+
+    protected void btnReturn_Click(object sender, EventArgs e)
+    {
+        Response.Redirect("TeamMainMenu.aspx");
     }
 }
