@@ -34,6 +34,8 @@
             <br />
             <br />
             <asp:Label ID="lblError" runat="server" ForeColor="Red"></asp:Label>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <asp:Button ID="btnReturn" runat="server" OnClick="btnReturn_Click" Text="Return to Main Menu" />
         </div>
     </form>
 </body>

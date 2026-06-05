@@ -52,6 +52,9 @@
             <asp:Button ID="btnCancel" runat="server" Text="Cancel" />
         </p>
         <p>
+            <asp:Button ID="btnReturn" runat="server" OnClick="btnReturn_Click" Text="Return to Main Menu" />
+        </p>
+        <p>
             &nbsp;</p>
     </form>
 </body>

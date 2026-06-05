@@ -36,6 +36,7 @@ public partial class ProductBookLogin : System.Web.UI.Page
         }
         else if (txtPassword.Text == "")
         {
+            Session["AnUser"] = AnUser;
             //record the error
             lblError.Text = "Enter a password: ";
         }
@@ -61,6 +62,6 @@ public partial class ProductBookLogin : System.Web.UI.Page
 
     protected void btnCancel_Click(object sender, EventArgs e)
     {
-
+        Response.Redirect("TeamMainMenu.aspx");
     }
 }
