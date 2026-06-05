@@ -32,11 +32,12 @@
         <asp:Label ID="lblDateAdded" runat="server" style="z-index: 1; left: 11px; top: 212px; position: absolute; right: 1454px; height: 19px" Text="DateAdded"></asp:Label>
         <asp:CheckBox ID="chkActive" runat="server" style="z-index: 1; left: 17px; top: 278px; position: absolute" Text="Active" TextAlign="Left" />
         <asp:Label ID="lblError" runat="server" style="z-index: 1; left: 16px; top: 307px; position: absolute"></asp:Label>
-        <asp:Button ID="btnCancel" runat="server" style="z-index: 1; left: 77px; top: 338px; position: absolute" Text="CANCEL" />
         <asp:Button ID="btnOK" runat="server" OnClick="btnOK_Click" style="z-index: 1; left: 17px; top: 338px; position: absolute" Text="OK" />
         <asp:Label ID="lblUserId0" runat="server" style="z-index: 1; left: 10px; top: 34px; position: absolute; right: 1416px" Text="User ID"></asp:Label>
         <asp:TextBox ID="txtUserId" runat="server" OnTextChanged="TextBox1_TextChanged" style="z-index: 1; left: 99px; top: 35px; position: absolute; width: 156px"></asp:TextBox>
         <asp:Button ID="btnFind" runat="server" OnClick="btnFind_Click" style="margin-left: 291px" Text="Find" Width="136px" />
+        <asp:Button ID="btnCancel" runat="server" style="z-index: 1; left: 77px; top: 338px; position: absolute; height: 26px;" Text="CANCEL" OnClick="btnCancel_Click" />
+         <asp:Button ID="btnReturn" runat="server" style="z-index: 1; left: 170px; top: 338px; position: absolute; height: 26px;" Text="RETURN TO MAIN MENU" OnClick="btnReturn_Click" />
     </form>
     <p>
         &nbsp;</p>

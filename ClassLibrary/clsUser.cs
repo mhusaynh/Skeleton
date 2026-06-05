@@ -118,7 +118,7 @@ namespace ClassLibrary
             {
                 Error = Error + "The user name may not be blank. ";
             }
-            if (UserName.Length > 50)
+            if (userName.Length > 50)
             {
                 Error = Error + "The user name must be less than 50 characters. ";
             }

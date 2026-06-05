@@ -21,7 +21,7 @@ public partial class TeamMainMenu : System.Web.UI.Page
     protected void btnUser_Click(object sender, EventArgs e)
     {
         //redirect the user to the user login page
-        Response.Redirect("UserDataEntry.aspx");
+        Response.Redirect("UserBookLogin.aspx");
     }
 
 
