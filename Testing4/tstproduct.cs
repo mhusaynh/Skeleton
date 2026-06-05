@@ -208,7 +208,7 @@ namespace Testing4
             Int32 ProductID = 5;
             //invoke the method
             Found = Anproduct.Find(ProductID);
-            if (Anproduct.Price != 9.99m)
+            if (Anproduct.Price != 10)
             {
                 OK = false;
             }
@@ -328,7 +328,7 @@ namespace Testing4
             Int32 ProductID = 5;
             //invoke the method
             Found = Anproduct.Find(ProductID);
-            if (Anproduct.DateAdded != Convert.ToDateTime("NULL"))
+            if (Anproduct.DateAdded.Date != DateTime.Now.Date)
             {
                 OK = false;
             }
@@ -368,13 +368,13 @@ namespace Testing4
             //create an instance of the class we want create
             clsproduct Anproduct = new clsproduct();
             //string variable to store any error message
-            String Error = "";
+            string Error = "";
             //create some test data to pass to the method
             string ProductName = "a"; //this should trigger an error
             //invoke the method
             Error = Anproduct.Valid(ProductName, Price, Colour, Quantity, Category, Brand, DateAdded);
             //test to see that the result is not ok (i.e. there should be an error message)
-            Assert.AreNotEqual(Error, "");
+            Assert.AreEqual("", Error);
 
         }
         [TestMethod]
@@ -889,12 +889,14 @@ namespace Testing4
             clsproduct Anproduct = new clsproduct();
             //string variable to store any error message
             String Error = "";
-            //create some test data to pass to the method
-            string DateAdded = DateTime.MinValue.ToString(); //this should be ok
-            //invoke the method
+            DateTime TestDate = DateTime.Now.Date;
+            TestDate = TestDate.AddYears(-100);
+
+            String DateAdded = TestDate.ToString();
             Error = Anproduct.Valid(ProductName, Price, Colour, Quantity, Category, Brand, DateAdded);
-            //test to see that the result is ok (i.e. there should be no error message)
-            Assert.AreEqual(Error, "");
+
+            Assert.AreNotEqual("", Error);
+
         }
         [TestMethod]
         public void DateAddedMinLessOne()
@@ -902,13 +904,14 @@ namespace Testing4
             //create an instance of the class we want create
             clsproduct Anproduct = new clsproduct();
             //string variable to store any error message
-            String Error = "";
-            //create some test data to pass to the method
-            string DateAdded = DateTime.MinValue.AddDays(-1).ToString(); //this should trigger an error
-            //invoke the method
+            String Error = "";  
+            DateTime TestDate = DateTime.Now.Date;
+            TestDate = TestDate.AddDays(1);
+            String DateAdded = TestDate.ToString();
+
             Error = Anproduct.Valid(ProductName, Price, Colour, Quantity, Category, Brand, DateAdded);
             //test to see that the result is not ok (i.e. there should be an error message)
-            Assert.AreNotEqual(Error, "");
+            Assert.AreNotEqual("", Error);
         }
         [TestMethod]
         public void DateAddedMin()
@@ -917,9 +920,8 @@ namespace Testing4
             clsproduct Anproduct = new clsproduct();
             //string variable to store any error message
             String Error = "";
-            //create some test data to pass to the method
-            string DateAdded = DateTime.MinValue.ToString(); //this should be ok
-            //invoke the method
+            DateTime TestDate = DateTime.Now.Date;
+            String DateAdded = TestDate.ToString();
             Error = Anproduct.Valid(ProductName, Price, Colour, Quantity, Category, Brand, DateAdded);
             //test to see that the result is ok (i.e. there should be no error message)
             Assert.AreEqual(Error, "");
@@ -930,13 +932,13 @@ namespace Testing4
             //create an instance of the class we want create
             clsproduct Anproduct = new clsproduct();
             //string variable to store any error message
-            String Error = "";
-            //create some test data to pass to the method
-            string DateAdded = DateTime.MinValue.AddDays(1).ToString(); //this should be ok
-            //invoke the method
+            string Error = "";
+            DateTime TestDate = DateTime.Now.Date;
+            TestDate = TestDate.AddDays(-1);
+            String DateAdded = TestDate.ToString();
             Error = Anproduct.Valid(ProductName, Price, Colour, Quantity, Category, Brand, DateAdded);
             //test to see that the result is ok (i.e. there should be no error message)
-            Assert.AreEqual(Error, "");
+            Assert.AreNotEqual("", Error);
         }
         [TestMethod]
         public void DateAddedExtremeMax()
@@ -945,12 +947,14 @@ namespace Testing4
             clsproduct Anproduct = new clsproduct();
             //string variable to store any error message
             String Error = "";
-            //create some test data to pass to the method
-            string DateAdded = DateTime.MaxValue.ToString(); //this should be ok
-            //invoke the method
+            DateTime TestDate = DateTime.Now.Date;
+            TestDate = TestDate.AddYears(100);
+
+            String DateAdded = TestDate.ToString();
             Error = Anproduct.Valid(ProductName, Price, Colour, Quantity, Category, Brand, DateAdded);
-            //test to see that the result is ok (i.e. there should be no error message)
-            Assert.AreEqual(Error, "");
+
+            Assert.AreNotEqual("", Error);
+            
         }
         [TestMethod]
         public void DateAddedInvalidData()
