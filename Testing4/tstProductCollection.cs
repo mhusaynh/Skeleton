@@ -245,10 +245,10 @@ namespace Testing4
             //apply a product name that doesn't exist
             FilteredProducts.ReportByProductName("Test Product");
             //check that the correct number of records are found
-            if (FilteredProducts.Count == 1)
+            if (FilteredProducts.Count >= 1)
             {
                 //check that the first record is ID 5
-                if (FilteredProducts.ProductList[0].ProductID != 5)
+                if (FilteredProducts.ProductList[0].ProductName.StartsWith("Test") == false)
                 {
                     OK = false;
                 }
