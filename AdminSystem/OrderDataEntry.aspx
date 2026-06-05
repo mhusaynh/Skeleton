@@ -5,12 +5,20 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
     <title></title>
+
+    <link href ="Content/bootstrap.min.css" rel="stylesheet"/>
+    <script src ="Scripts/bootstrap.bundle.min.js"<></script>
+    <script src="Scripts/bootstrap.min.js"<></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css"/>
 </head>
 <body style="height: 350px; background-color: #3C5273">
     <form id="form1" runat="server">
         <div>
             <asp:Button ID="btnMainMenu" runat="server" style="z-index: 1; left: 280px; top: 415px; position: absolute" Text="Return to Main Menu" OnClick="btnMainMenu_Click"/>
-            This is the Order Data Entry Page</div>
+            </div>
+        <div style="padding-left: 50px; padding-top: 50px;">
+            This is the Order Data Entry Page
+        </div>
         <p>
             <asp:Label ID="lblOrderId" runat="server" style="z-index: 1; left: 37px; top: 113px; position: absolute" Text="OrderId" width="128px"></asp:Label>
             <asp:TextBox ID="txtOrderId" runat="server" OnTextChanged="TextBox1_TextChanged" style="z-index: 1; left: 121px; top: 111px; position: absolute"></asp:TextBox>
@@ -50,7 +58,7 @@
         <asp:Label ID="lblPrice" runat="server" style="z-index: 1; left: 39px; top: 199px; position: absolute; width: 116px" Text="Price"></asp:Label>
         <asp:TextBox ID="txtPrice" runat="server" style="z-index: 1; left: 119px; top: 197px; position: absolute" width="128px"></asp:TextBox>
         <asp:Label ID="lblDateAdded" runat="server" style="z-index: 1; left: 33px; top: 236px; position: absolute; right: 1402px" Text="Date Added"></asp:Label>
-        <asp:TextBox ID="txtDateAdded" runat="server" style="z-index: 1; left: 125px; top: 239px; position: absolute" width="128px"></asp:TextBox>
+        <asp:TextBox ID="txtDateAdded" runat="server" style="z-index: 1; left: 125px; top: 239px; position: absolute" width="158px"></asp:TextBox>
         <asp:Label ID="lblQuantity" runat="server" style="z-index: 1; left: 38px; top: 284px; position: absolute" Text="Quantity" width="116px"></asp:Label>
         <asp:TextBox ID="txtQuantity" runat="server" style="z-index: 1; left: 121px; top: 283px; position: absolute" width="128px"></asp:TextBox>
         <asp:Label ID="lblError" runat="server" style="z-index: 1; left: 46px; top: 381px; position: absolute" Text="lblError"></asp:Label>
