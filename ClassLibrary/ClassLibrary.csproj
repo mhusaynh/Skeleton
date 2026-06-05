@@ -43,6 +43,8 @@
   <ItemGroup>
     <Compile Include="clsAdmin.cs" />
     <Compile Include="clsAdminCollection.cs" />
+    <Compile Include="clsOrderCollection.cs" />
+    <Compile Include="clsOrderUser.cs" />
     <Compile Include="clsUserUser.cs" />
     <Compile Include="clsAdminUser.cs" />
     <Compile Include="clsDataConnection.cs" />
